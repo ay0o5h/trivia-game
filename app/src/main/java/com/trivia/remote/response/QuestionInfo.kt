@@ -1,4 +1,4 @@
-package com.trivia.remote.resourses
+package com.trivia.remote.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -19,7 +19,7 @@ data class QuestionInfo(
     @SerializedName("question")
     val question: Question?,
     @SerializedName("regions")
-    val regions: List<Any?>?,
+    val regions: List<String?>?,
     @SerializedName("tags")
     val tags: List<String?>?,
     @SerializedName("type")
