@@ -1,4 +1,4 @@
-package com.trivia.remote.resourses
+package com.trivia.remote.response
 
 
 import com.google.gson.annotations.SerializedName
