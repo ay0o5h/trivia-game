@@ -3,7 +3,7 @@ package com.trivia.remote.resourses
 import com.google.gson.annotations.SerializedName
 
 
-data class QuestionInfoResource(
+data class QuestionInfo(
     @SerializedName("category")
     val category: String?,
     @SerializedName("correctAnswer")
@@ -17,7 +17,7 @@ data class QuestionInfoResource(
     @SerializedName("isNiche")
     val isNiche: Boolean?,
     @SerializedName("question")
-    val question: QuestionResource?,
+    val question: Question?,
     @SerializedName("regions")
     val regions: List<Any?>?,
     @SerializedName("tags")

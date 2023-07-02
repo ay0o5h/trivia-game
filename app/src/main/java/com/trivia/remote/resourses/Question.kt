@@ -3,7 +3,7 @@ package com.trivia.remote.resourses
 
 import com.google.gson.annotations.SerializedName
 
-data class QuestionResource(
+data class Question(
     @SerializedName("text")
     val text: String?
 )
