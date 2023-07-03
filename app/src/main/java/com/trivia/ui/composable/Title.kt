@@ -11,6 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.trivia.ui.theme.TextWhite
+import com.trivia.ui.theme.fontSize_22
 
 @Composable
 fun Title(
@@ -20,8 +21,8 @@ fun Title(
     Text(
         text = text,
         modifier=modifier,
-        fontSize = 22.sp,
-            fontWeight = FontWeight(600),
+        fontSize = fontSize_22,
+            fontWeight = FontWeight.W600,
             color = TextWhite,
             textAlign = TextAlign.Center)
 }

@@ -5,7 +5,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -16,14 +15,17 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.theme.Blue
 import com.trivia.ui.theme.Purple
 import com.trivia.ui.theme.RedDark
 import com.trivia.ui.theme.RedLight
 import com.trivia.ui.theme.TextWhite
+import com.trivia.ui.theme.fontSize_18
+import com.trivia.ui.theme.radius_50
+import com.trivia.ui.theme.space_15
+import com.trivia.ui.theme.space_2
+import com.trivia.ui.theme.space_8
 
 @Composable
 fun PrimaryButton(
@@ -38,13 +40,13 @@ fun PrimaryButton(
             containerColor = Color.Transparent,
             contentColor = Color.White,
         ),
-        contentPadding= PaddingValues( vertical = 15.dp),
+        contentPadding= PaddingValues( vertical = space_15),
         onClick = onClick,
                 modifier = Modifier
                     .fillMaxWidth(fraction = fraction)
-                .padding(8.dp)
+                .padding(space_8)
                     .border(
-                        width = 4.dp,
+                        width = space_2,
                         brush = when (buttonUIState){
                             ButtonUIState.ErrorState -> Brush.horizontalGradient(
                                 colors = listOf(
@@ -56,7 +58,7 @@ fun PrimaryButton(
                                 Purple,
                                 Blue),
                         )},
-                        shape = RoundedCornerShape(percent = 50)
+                        shape = RoundedCornerShape(percent = radius_50)
                     )
                     .background(
                         brush =when (buttonUIState){
@@ -81,14 +83,14 @@ fun PrimaryButton(
                                     Blue),
                             )
                         },
-                        shape = RoundedCornerShape(percent = 50)
+                        shape = RoundedCornerShape(radius_50)
                     )
     ) {
 
         Text(
             text = text,
-            fontSize = 18.sp,
-            fontWeight = FontWeight(500),
+            fontSize = fontSize_18,
+            fontWeight = FontWeight.W500,
             color = TextWhite)
     }
 }
