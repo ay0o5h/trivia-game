@@ -17,15 +17,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.trivia.ui.bases.ButtonUIState
+import com.trivia.ui.theme.Blue
+import com.trivia.ui.theme.Purple
+import com.trivia.ui.theme.RedDark
+import com.trivia.ui.theme.RedLight
 import com.trivia.ui.theme.TextWhite
 
 @Composable
 fun PrimaryButton(
     text: String,
+    buttonUIState: ButtonUIState = ButtonUIState.StartState,
     onClick: () -> Unit,
-    isWrongAnswer: Boolean = false,
-    isCorrectAnswer: Boolean = false,
-    isClicked: Boolean = false
 ){
     Button(
 
@@ -40,14 +43,42 @@ fun PrimaryButton(
                 .padding(8.dp)
                     .border(
                         width = 4.dp,
-                        brush = Brush.horizontalGradient(colors =  listOf(Color(0xFFBE61E9), Color(0xFF0657A3))),
+                        brush = when (buttonUIState){
+                            ButtonUIState.ErrorState -> Brush.horizontalGradient(
+                                colors = listOf(
+                                    RedDark,
+                                    RedLight),
+                            )
+                           else-> Brush.horizontalGradient(
+                            colors = listOf(
+                                Purple,
+                                Blue),
+                        )},
                         shape = RoundedCornerShape(percent = 50)
                     )
                     .background(
-                        brush = Brush.horizontalGradient(
-                            colors =     listOf(Color(0xFFBE61E9),
-                                Color(0xFF0657A3)),
-                        ),
+                        brush =when (buttonUIState){
+                            ButtonUIState.StartState -> Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent),
+                            )
+                            ButtonUIState.ErrorState -> Brush.horizontalGradient(
+                                colors = listOf(
+                                    RedDark,
+                                    RedLight),
+                            )
+                            ButtonUIState.CorrectState -> Brush.horizontalGradient(
+                                colors = listOf(
+                                    Purple,
+                                    Blue),
+                            )
+                            ButtonUIState.ClickedState -> Brush.horizontalGradient(
+                                colors = listOf(
+                                    Purple,
+                                    Blue),
+                            )
+                        },
                         shape = RoundedCornerShape(percent = 50)
                     )
     ) {
