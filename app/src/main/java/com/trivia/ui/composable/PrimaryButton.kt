@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,6 +28,7 @@ import com.trivia.ui.theme.TextWhite
 @Composable
 fun PrimaryButton(
     text: String,
+    fraction : Float = 9f,
     buttonUIState: ButtonUIState = ButtonUIState.StartState,
     onClick: () -> Unit,
 ){
@@ -39,7 +41,7 @@ fun PrimaryButton(
         contentPadding= PaddingValues( vertical = 15.dp),
         onClick = onClick,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(fraction = fraction)
                 .padding(8.dp)
                     .border(
                         width = 4.dp,
