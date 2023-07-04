@@ -13,7 +13,11 @@ val Pink40 = Color(0xFF7D5260)
 val Purple = Color(0xFFBE61E9)
 val Blue = Color(0xFF0657A3)
 
-val RedDark = Color(0xFFCB196F)
-val RedLight= Color(0xFF95362)
+val RedLight = Color(0xFFCB196F)
+val  RedDark= Color(0xFF95362)
 
 val TextWhite =Color(0xDEFFFFFF)
+
+val White_36= Color(0x36FFFFFF)
+val White_60 = Color(0x60FFFFFF)
+val White_70 = Color(0x70FFFFFF)
