@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.trivia.R
+import com.trivia.ui.theme.White_70
 
 @Composable
 fun IconArrow(
@@ -16,7 +17,7 @@ fun IconArrow(
     Icon(
         painter = painterResource(id = R.drawable.arrowright),
         contentDescription = "arrowright",
-        tint = Color.White,
+        tint = White_70,
         modifier = modifier.size(24.dp)
     )
 }
