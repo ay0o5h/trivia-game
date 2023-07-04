@@ -13,17 +13,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.skydoves.cloudy.Cloudy
 import com.trivia.R
+import com.trivia.ui.theme.radius_25
 
 @Composable
 fun ScreenBackground(
-   content: @Composable () -> Unit,
    modifier : Modifier = Modifier
-       .fillMaxSize().blur(radius=40.dp)
+       .fillMaxSize(),
+   content: @Composable () -> Unit,
 ){
     Box(modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Cloudy(radius = 25){
+        Cloudy(radius = radius_25){
             Image(
                 modifier = Modifier.fillMaxWidth().fillMaxHeight(),
                 painter = painterResource(id = R.drawable.background),
