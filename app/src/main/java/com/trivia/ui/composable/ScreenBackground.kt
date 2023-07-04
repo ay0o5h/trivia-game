@@ -16,10 +16,11 @@ import com.trivia.R
 
 @Composable
 fun ScreenBackground(
-   content: @Composable () -> Unit
+   content: @Composable () -> Unit,
+   modifier : Modifier = Modifier
+       .fillMaxSize().blur(radius=40.dp)
 ){
-    Box(modifier = Modifier
-        .fillMaxSize().blur(radius=40.dp),
+    Box(modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         Cloudy(radius = 25){
