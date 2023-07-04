@@ -1,4 +1,4 @@
-package com.trivia.viewModels
+package com.trivia.ui.bases
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
