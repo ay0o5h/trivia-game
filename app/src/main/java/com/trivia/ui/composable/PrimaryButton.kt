@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.trivia.ui.bases.ButtonUIState
@@ -21,7 +22,11 @@ import com.trivia.ui.theme.Purple
 import com.trivia.ui.theme.RedDark
 import com.trivia.ui.theme.RedLight
 import com.trivia.ui.theme.TextWhite
+import com.trivia.ui.theme.White_36
+import com.trivia.ui.theme.White_60
+import com.trivia.ui.theme.White_70
 import com.trivia.ui.theme.fontSize_18
+import com.trivia.ui.theme.radius_28
 import com.trivia.ui.theme.radius_50
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_2
@@ -47,51 +52,26 @@ fun PrimaryButton(
                 .padding(space_8)
                     .border(
                         width = space_2,
-                        brush = when (buttonUIState){
-                            ButtonUIState.ErrorState -> Brush.horizontalGradient(
-                                colors = listOf(
-                                    RedDark,
-                                    RedLight),
-                            )
-                           else-> Brush.horizontalGradient(
-                            colors = listOf(
-                                Purple,
-                                Blue),
-                        )},
-                        shape = RoundedCornerShape(percent = radius_50)
-                    )
-                    .background(
-                        brush =when (buttonUIState){
-                            ButtonUIState.StartState -> Brush.horizontalGradient(
-                                colors = listOf(
-                                    Color.Transparent,
-                                    Color.Transparent),
-                            )
-                            ButtonUIState.ErrorState -> Brush.horizontalGradient(
-                                colors = listOf(
-                                    RedDark,
-                                    RedLight),
-                            )
-                            ButtonUIState.CorrectState -> Brush.horizontalGradient(
-                                colors = listOf(
-                                    Purple,
-                                    Blue),
-                            )
-                            ButtonUIState.ClickedState -> Brush.horizontalGradient(
-                                colors = listOf(
-                                    Purple,
-                                    Blue),
-                            )
+                        color = when (buttonUIState){
+                            ButtonUIState.ErrorState -> RedDark
+                           else -> White_60
                         },
-                        shape = RoundedCornerShape(radius_50)
+                        shape = RoundedCornerShape(percent = radius_28)
                     )
+                    .background(color = when (buttonUIState){
+                        ButtonUIState.StartState -> Transparent
+                        ButtonUIState.ErrorState -> RedDark
+                        ButtonUIState.CorrectState -> White_60
+                        ButtonUIState.ClickedState -> White_60
+                    }, shape = RoundedCornerShape(percent = radius_28))
+
     ) {
 
         Text(
             text = text,
             fontSize = fontSize_18,
             fontWeight = FontWeight.W500,
-            color = TextWhite)
+            color = White_70)
     }
 }
 
