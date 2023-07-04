@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.trivia.ui.theme.TextWhite
 import com.trivia.ui.theme.fontSize_22
+import org.w3c.dom.Text
 
 @Composable
 fun Title(
