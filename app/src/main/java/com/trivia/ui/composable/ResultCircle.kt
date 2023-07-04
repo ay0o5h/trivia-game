@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -20,34 +21,41 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.trivia.ui.theme.Blue
+import com.trivia.ui.theme.Gray
 import com.trivia.ui.theme.Purple
+import com.trivia.ui.theme.White_36
+import com.trivia.ui.theme.fontSize_28
+import com.trivia.ui.theme.fontSize_36
+import com.trivia.ui.theme.space_140
+import com.trivia.ui.theme.space_4
 
 @Composable
 fun ResultCircle(
     result: Int
 ) {
     Surface(
-        modifier = Modifier.size(140.dp),
+        modifier = Modifier.size(space_140),
         shape = CircleShape,
+        color= Color.Transparent,
         border = BorderStroke(
-            4.dp, brush = Brush.horizontalGradient(listOf(Purple, Blue))
+           space_4, color = Gray, )
         )
-    ) {
+    {
         val text = buildAnnotatedString {
-            withStyle(style = SpanStyle(color = White.copy(0.87f), fontSize = 36.sp)) {
+            withStyle(style = SpanStyle(color = White.copy(0.87f), fontSize = fontSize_36)) {
                 append(result.toString())
             }
-            withStyle(style = SpanStyle(color = White.copy(0.7f), fontSize = 36.sp)) {
+            withStyle(style = SpanStyle(color = White.copy(0.7f), fontSize = fontSize_36)) {
                 append("/")
             }
 
-            withStyle(style = SpanStyle(color = White.copy(0.7f), fontSize = 28.sp)) {
+            withStyle(style = SpanStyle(color = White.copy(0.7f), fontSize = fontSize_28)) {
                 append("10")
             }
         }
 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = text, fontSize = 36.sp, color = White, fontWeight = FontWeight(500))
+            Text(text = text, fontSize = fontSize_36, color = White, fontWeight = FontWeight.W500)
         }
     }
 }
