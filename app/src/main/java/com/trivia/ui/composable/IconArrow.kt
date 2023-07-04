@@ -1,4 +1,4 @@
-package com.trivia.elements
+package com.trivia.ui.composable
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon

@@ -1,4 +1,4 @@
-package com.trivia.elements
+package com.trivia.ui.composable
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.ripple.rememberRipple
