@@ -10,6 +10,8 @@ val space_12= 12.dp
 val space_15= 15.dp
 val space_16= 16.dp
 val radius_50 = 50
+val radius_28 = 28
+
 
 val fontSize_12 = 12.sp
 val fontSize_14 = 14.sp
