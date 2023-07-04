@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.theme.Blue
 import com.trivia.ui.theme.Purple
@@ -49,20 +50,20 @@ fun PrimaryButton(
         onClick = onClick,
                 modifier = Modifier
                     .fillMaxWidth(fraction = fraction)
-                .padding(space_8)
+                .padding(horizontal = 20.dp)
                     .border(
                         width = space_2,
                         color = when (buttonUIState){
                             ButtonUIState.ErrorState -> RedDark
-                           else -> White_60
+                           else -> White_36
                         },
                         shape = RoundedCornerShape(percent = radius_28)
                     )
                     .background(color = when (buttonUIState){
                         ButtonUIState.StartState -> Transparent
                         ButtonUIState.ErrorState -> RedDark
-                        ButtonUIState.CorrectState -> White_60
-                        ButtonUIState.ClickedState -> White_60
+                        ButtonUIState.CorrectState -> White_36
+                        ButtonUIState.ClickedState -> White_36
                     }, shape = RoundedCornerShape(percent = radius_28))
 
     ) {

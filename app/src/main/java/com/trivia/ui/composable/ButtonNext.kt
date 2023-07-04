@@ -15,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.trivia.elements.IconArrow
 import com.trivia.ui.theme.Blue
 import com.trivia.ui.theme.Purple
 
