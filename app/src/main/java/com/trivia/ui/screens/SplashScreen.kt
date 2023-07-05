@@ -1,14 +1,21 @@
 package com.trivia.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.graphics.BlurEffect
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -16,6 +23,7 @@ import com.skydoves.cloudy.Cloudy
 import com.trivia.R
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.PrimaryButton
+import com.trivia.ui.theme.Purple
 
 @Composable
 fun SplashScreen(){
@@ -25,19 +33,22 @@ fun SplashScreen(){
 @Composable
 fun SplashContent(){
     Box(modifier = Modifier
-        .fillMaxSize().blur(radius=40.dp),
+        .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Cloudy(radius = 25){
-            Image(
-                modifier = Modifier.fillMaxWidth().fillMaxHeight(),
-                painter = painterResource(id = R.drawable.background),
-                contentDescription = "")
-        }
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight().blur(radius = 80.dp),
+                    painter = painterResource(id = R.drawable.background),
+                    contentDescription = ""
+                )
 
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = "")
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = ""
+            )
+
     }
 }
 

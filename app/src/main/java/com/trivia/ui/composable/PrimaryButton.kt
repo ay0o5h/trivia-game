@@ -25,6 +25,7 @@ import com.trivia.ui.theme.White_36
 import com.trivia.ui.theme.radius_28
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_2
+import com.trivia.ui.theme.space_20
 
 @Composable
 fun PrimaryButton(
@@ -61,7 +62,7 @@ fun PrimaryButton(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth(fraction = fraction)
-            .padding(horizontal = 20.dp)
+            .padding(horizontal = space_20)
             .border(
                 width = space_2,
                 color = borderColor,

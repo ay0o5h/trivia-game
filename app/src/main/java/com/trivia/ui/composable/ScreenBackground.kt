@@ -24,12 +24,12 @@ fun ScreenBackground(
     Box(modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Cloudy(radius = radius_25){
+
             Image(
-                modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+                modifier = Modifier.fillMaxWidth().fillMaxHeight().blur(radius = 80.dp),
                 painter = painterResource(id = R.drawable.background),
                 contentDescription = "")
-        }
+
 
         content()
     }

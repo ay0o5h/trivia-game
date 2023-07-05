@@ -13,15 +13,15 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.poppins_regular)),
         fontWeight = FontWeight(500),
-        fontSize = 18.sp,
-        lineHeight = 24.sp,
+        fontSize = fontSize_18,
+        lineHeight = fontSize_24,
         letterSpacing = 0.5.sp
     ),
     titleLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.poppins_regular)),
-        fontWeight = FontWeight(600),
-        fontSize = 22.sp,
-        lineHeight = 24.sp,
+        fontWeight = FontWeight.W600,
+        fontSize = fontSize_22,
+        lineHeight = fontSize_24,
         letterSpacing = 0.5.sp
     ),
 
