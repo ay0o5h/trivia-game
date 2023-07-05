@@ -1,7 +1,7 @@
 package com.trivia.viewmodel
 
-import com.trivia.repository.model.CategoriesType
+import com.trivia.viewmodel.state.CategoryState
 
 interface CategoryScreenInteractions {
-    fun onSelectCategory(type: CategoriesType)
+    fun onSelectCategory(category: CategoryState)
 }

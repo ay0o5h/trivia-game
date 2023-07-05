@@ -25,7 +25,7 @@ import com.trivia.ui.composable.ButtonNext
 import com.trivia.ui.composable.PrimaryButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
-import com.trivia.ui.theme.space_24
+import com.trivia.ui.theme.space_12
 import com.trivia.viewmodel.CategoryScreenInteractions
 import com.trivia.viewmodel.CategoryViewModel
 import com.trivia.viewmodel.state.CategoryUIState
@@ -64,12 +64,16 @@ fun CategoryContent(state: CategoryUIState, viewModel: CategoryScreenInteraction
             )
 
             LazyColumn(
-                modifier = Modifier.padding(top = space_24),
+                modifier = Modifier.padding(top = space_12),
                 contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
                 items(state.categories) {
-                    PrimaryButton(text = it.title) {
-                        viewModel.onSelectCategory(it.type)
+                    PrimaryButton(
+                        text = it.title,
+                        modifier = Modifier.padding(top = 12.dp),
+                        buttonUIState = it.buttonUIState
+                    ) {
+                        viewModel.onSelectCategory(it)
                     }
                 }
             }
