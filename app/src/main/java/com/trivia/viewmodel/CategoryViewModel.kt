@@ -2,6 +2,8 @@ package com.trivia.viewmodel
 
 import com.trivia.repository.model.CategoriesType
 import com.trivia.ui.bases.BaseViewModel
+import com.trivia.ui.bases.ButtonUIState
+import com.trivia.viewmodel.state.CategoryState
 import com.trivia.viewmodel.state.CategoryUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
@@ -11,10 +13,20 @@ class CategoryViewModel() : BaseViewModel<CategoryUIState>(CategoryUIState()),
     CategoryScreenInteractions {
 
 
-    override fun onSelectCategory(type: CategoriesType) {
-        val isVisible = type != _state.value.selectedCategory
-        val category = if (type != _state.value.selectedCategory) type else CategoriesType.UNKNOWN
-        _state.update { it.copy(selectedCategory = category, isButtonNextVisible = isVisible) }
+    override fun onSelectCategory(category: CategoryState) {
+        val isVisible = category.type != _state.value.selectedCategory
+        val selectedCategory = if (isVisible) category.type else CategoriesType.UNKNOWN
+        val updatedCategories = _state.value.categories.map {
+            it.copy(buttonUIState = if (it.type == category.type && isVisible) ButtonUIState.ClickedState
+            else ButtonUIState.StartState)
+        }
+        _state.update {
+            it.copy(
+                selectedCategory = selectedCategory,
+                isButtonNextVisible = isVisible,
+                categories = updatedCategories
+            )
+        }
     }
 
 
