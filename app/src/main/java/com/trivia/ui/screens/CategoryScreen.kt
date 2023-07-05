@@ -20,6 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.ui.composable.ButtonNext
 import com.trivia.ui.composable.PrimaryButton
@@ -32,6 +34,7 @@ import com.trivia.viewmodel.state.CategoryUIState
 
 @Composable
 fun CategoryScreen(
+    navController: NavHostController,
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -93,5 +96,5 @@ fun CategoryContent(state: CategoryUIState, viewModel: CategoryScreenInteraction
 @Preview
 @Composable
 fun CategoryScreenPreview() {
-    CategoryScreen()
+    CategoryScreen(rememberNavController())
 }

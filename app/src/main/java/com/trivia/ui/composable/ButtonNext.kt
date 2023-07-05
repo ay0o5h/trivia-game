@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.White36
+import com.trivia.ui.theme.space_56
 
 @Composable
 fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier) {
@@ -30,7 +31,7 @@ fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier) {
     AnimatedVisibility(visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Box(
             modifier = modifier
-                .size(56.dp)
+                .size(space_56)
                 .clip(shape = CircleShape)
                 .background(brush = gradient)
                 .clickable(interactionSource = CreateMutableInteractionSource(),

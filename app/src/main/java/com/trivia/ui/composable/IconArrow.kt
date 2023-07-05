@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.trivia.R
 import com.trivia.ui.theme.White_70
 import com.trivia.ui.theme.White_87
+import com.trivia.ui.theme.space_24
 
 @Composable
 fun IconArrow(
@@ -19,6 +20,6 @@ fun IconArrow(
         painter = painterResource(id = R.drawable.arrowright),
         contentDescription = "arrowright",
         tint = White_87,
-        modifier = modifier.size(24.dp)
+        modifier = modifier.size(space_24)
     )
 }

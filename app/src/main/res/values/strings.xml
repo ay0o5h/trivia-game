@@ -4,4 +4,5 @@
     <string name="try_again">Try Again</string>
     <string name="main_menu">Main Menu</string>
     <string name="game_over">Game over</string>
+    <string name="good_luck_try_again_and_you_will_succeed_next_time">Good luck, try again and you will succeed next time</string>
 </resources>

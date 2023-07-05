@@ -7,9 +7,10 @@ import com.trivia.viewmodel.state.CategoryState
 import com.trivia.viewmodel.state.CategoryUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel() : BaseViewModel<CategoryUIState>(CategoryUIState()),
+class CategoryViewModel @Inject constructor() : BaseViewModel<CategoryUIState>(CategoryUIState()),
     CategoryScreenInteractions {
 
 
