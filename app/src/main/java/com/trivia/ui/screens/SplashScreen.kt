@@ -19,6 +19,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.skydoves.cloudy.Cloudy
 import com.trivia.R
 import com.trivia.ui.bases.ButtonUIState
@@ -26,7 +28,9 @@ import com.trivia.ui.composable.PrimaryButton
 import com.trivia.ui.theme.Purple
 
 @Composable
-fun SplashScreen(){
+fun SplashScreen(
+    navController: NavHostController,
+){
     SplashContent()
 }
 
@@ -55,5 +59,5 @@ fun SplashContent(){
 @Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview() {
-    SplashScreen()
+    SplashScreen(rememberNavController())
 }
