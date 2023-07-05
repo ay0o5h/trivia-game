@@ -21,6 +21,9 @@ val TextWhite =Color(0xDEFFFFFF)
 val White_36= Color(0x36FFFFFF)
 val White_60 = Color(0x60FFFFFF)
 val White_70 = Color(0x70FFFFFF)
+
+val Gray =Color(0x5CFFFFFF)
+
 val White_87 = Color(0xDEFFFFFF)
 val White36= Color(0x5CFFFFFF)
 val PurpleDark = Color(0xFF6C0E9C)

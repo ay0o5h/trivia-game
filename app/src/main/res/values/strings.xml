@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">trivia</string>
+    <string name="congratulations_you_won_the_game_enjoy_your_victory_and_celebrate_it">Congratulations! You won the game! Enjoy your victory and celebrate it!</string>
+    <string name="try_again">Try Again</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="game_over">Game over</string>
 </resources>
