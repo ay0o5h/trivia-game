@@ -11,33 +11,24 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.ui.theme.Blue
-import com.trivia.ui.theme.Purple
 import com.trivia.ui.theme.RedDark
-import com.trivia.ui.theme.RedLight
-import com.trivia.ui.theme.TextWhite
+import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_36
-import com.trivia.ui.theme.White_60
-import com.trivia.ui.theme.White_70
-import com.trivia.ui.theme.fontSize_18
 import com.trivia.ui.theme.radius_28
-import com.trivia.ui.theme.radius_50
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_2
-import com.trivia.ui.theme.space_8
 
 @Composable
 fun PrimaryButton(
     text: String,
     fraction : Float = 9f,
     buttonUIState: ButtonUIState = ButtonUIState.StartState,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ){
     Button(
@@ -46,9 +37,9 @@ fun PrimaryButton(
             containerColor = Color.Transparent,
             contentColor = Color.White,
         ),
-        contentPadding= PaddingValues( vertical = space_15),
+        contentPadding = PaddingValues(vertical = space_15),
         onClick = onClick,
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxWidth(fraction = fraction)
                 .padding(horizontal = 20.dp)
                     .border(
@@ -70,9 +61,8 @@ fun PrimaryButton(
 
         Text(
             text = text,
-            fontSize = fontSize_18,
-            fontWeight = FontWeight.W500,
-            color = White_70)
+            style = Typography.bodyLarge
+        )
     }
 }
 
