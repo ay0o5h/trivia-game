@@ -6,7 +6,6 @@ import androidx.compose.ui.unit.sp
 val space_2= 2.dp
 val space_4= 4.dp
 val space_8= 8.dp
-val space_20= 8.dp
 val space_24= 8.dp
 val space_12= 12.dp
 val space_15= 15.dp
