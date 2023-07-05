@@ -13,17 +13,18 @@ class CategoryViewModel() : BaseViewModel<CategoryUIState>(CategoryUIState()),
     CategoryScreenInteractions {
 
 
-    override fun onSelectCategory(category: CategoryState) {
-        val isVisible = category.type != _state.value.selectedCategory
-        val selectedCategory = if (isVisible) category.type else CategoriesType.UNKNOWN
+    override fun onSelectCategory(passedCategory: CategoryState) {
+        val isNotSameCategory = passedCategory.type != _state.value.selectedCategory
+        val selectedCategory = if (isNotSameCategory) passedCategory.type else CategoriesType.UNKNOWN
+
         val updatedCategories = _state.value.categories.map {
-            it.copy(buttonUIState = if (it.type == category.type && isVisible) ButtonUIState.ClickedState
+            it.copy(buttonUIState = if (it.type == passedCategory.type && isNotSameCategory) ButtonUIState.ClickedState
             else ButtonUIState.StartState)
         }
         _state.update {
             it.copy(
                 selectedCategory = selectedCategory,
-                isButtonNextVisible = isVisible,
+                isButtonNextVisible = isNotSameCategory,
                 categories = updatedCategories
             )
         }
