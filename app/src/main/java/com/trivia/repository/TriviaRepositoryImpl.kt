@@ -2,7 +2,7 @@ package com.trivia.repository
 
 import com.trivia.remote.TriviaService
 import com.trivia.remote.response.QuestionInfo
-import com.trivia.repository.model.Categories
+import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.CustomException
 import com.trivia.repository.model.Difficulty
 import retrofit2.Response
@@ -13,8 +13,8 @@ class TriviaRepositoryImpl @Inject constructor(
     private val apiService: TriviaService
 ): TriviaRepository  {
 
-    override suspend fun getQuestions(category: Categories, difficulty: Difficulty): List<QuestionInfo> {
-        return wrapBaseResponse { apiService.getQuestions(categories = category, difficulty = difficulty) }
+    override suspend fun getQuestions(category: CategoriesType, difficulty: Difficulty): List<QuestionInfo> {
+        return wrapBaseResponse { apiService.getQuestions(categoriesType = category, difficulty = difficulty) }
     }
 
     private suspend fun <T> wrapBaseResponse(

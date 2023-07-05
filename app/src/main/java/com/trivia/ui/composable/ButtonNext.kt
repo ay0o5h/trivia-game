@@ -20,10 +20,10 @@ import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.White36
 
 @Composable
-fun FilledCircularButton(isVisible: Boolean, modifier: Modifier = Modifier) {
+fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier) {
     val gradient = Brush.linearGradient(
         colors = listOf(White36, PurpleDark),
-        start = Offset(x = -50f, y = 150f),
+        start = Offset(x = 0f, y = 150f),
         end = Offset(x = 250f, y = 0f),
     )
 
@@ -48,6 +48,6 @@ fun FilledCircularButton(isVisible: Boolean, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun Preview() {
-    FilledCircularButton(true)
+    ButtonNext(true)
 
 }

@@ -1,7 +1,7 @@
 package com.trivia.remote
 
 import com.trivia.remote.response.QuestionInfo
-import com.trivia.repository.model.Categories
+import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.Difficulty
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,7 +13,7 @@ interface TriviaService {
     @GET("questions")
     suspend fun getQuestions(
         @Query("limit") limit: Int = 10,
-        @Query("categories") categories: Categories,
+        @Query("categories") categoriesType: CategoriesType,
         @Query("difficulty") difficulty: Difficulty,
         @Query("type") type: String = "text_choice",
     ): Response<List<QuestionInfo>>
