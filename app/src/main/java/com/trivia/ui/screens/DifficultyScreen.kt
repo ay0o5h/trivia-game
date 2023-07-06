@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -23,32 +24,30 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.ScreensRoute
+import com.trivia.ui.composable.ButtonContinue
 import com.trivia.ui.composable.ButtonNext
 import com.trivia.ui.composable.PrimaryButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
-import com.trivia.viewmodel.CategoryScreenInteractions
 import com.trivia.viewmodel.CategoryViewModel
+import com.trivia.viewmodel.DifficultyScreenInteractions
 import com.trivia.viewmodel.state.CategoryUIState
+import com.trivia.viewmodel.state.DifficultyUIState
 
 @Composable
-fun CategoryScreen(
+fun DifficultyScreen(
     navController: NavHostController,
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
-    val state by viewModel.stateCategory.collectAsState()
-
-    CategoryContent(state, viewModel, navController)
+    val state by viewModel.stateDifficulty.collectAsState()
+    DifficultyContent(state, viewModel)
 }
 
-
 @Composable
-fun CategoryContent(
-    state: CategoryUIState,
-    viewModel: CategoryScreenInteractions,
-    navController: NavHostController
+fun DifficultyContent(
+    state: DifficultyUIState,
+    viewModel: DifficultyScreenInteractions
 ) {
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
@@ -67,7 +66,7 @@ fun CategoryContent(
         ) {
             Text(
                 modifier = Modifier.padding(end = 20.dp, start = 20.dp, top = 202.dp),
-                text = "Choose the game category",
+                text = "Choose your game level",
                 style = Typography.titleLarge,
                 color = White_87
             )
@@ -76,32 +75,36 @@ fun CategoryContent(
                 modifier = Modifier.padding(top = space_12),
                 contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
-                items(state.categories) {
+                items(state.difficulties) {
                     PrimaryButton(
                         text = it.title,
                         modifier = Modifier.padding(top = 12.dp),
                         buttonUIState = it.buttonUIState
                     ) {
-                        viewModel.onSelectCategory(it)
+                        viewModel.onSelectDifficulty(it)
                     }
                 }
             }
 
-            ButtonNext(
+            ButtonContinue(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = 48.dp),
-                onClick = { navController.navigate(ScreensRoute.Difficulty.route) }
+                text = "Let's Go",
+                onClick = {}
             )
+
+
 
         }
 
 
     }
+
 }
 
 
 @Preview
 @Composable
-fun CategoryScreenPreview() {
-    CategoryScreen(rememberNavController())
+fun DifficultyScreenPreview() {
+    DifficultyScreen(rememberNavController())
 }

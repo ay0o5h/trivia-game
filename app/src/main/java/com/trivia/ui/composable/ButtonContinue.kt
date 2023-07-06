@@ -6,8 +6,14 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,22 +23,29 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trivia.ui.theme.PurpleDark
+import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White36
+import com.trivia.ui.theme.White_70
 import com.trivia.ui.theme.space_56
 
+
 @Composable
-fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun ButtonContinue(
+    isVisible: Boolean,
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit,
+) {
     val gradient = Brush.linearGradient(
         colors = listOf(White36, PurpleDark),
-        start = Offset(x = 0f, y = 150f),
-        end = Offset(x = 250f, y = 0f),
+        start = Offset(x = -20f, y = 150f),
+        end = Offset(x = 400f, y = -100f),
     )
 
     AnimatedVisibility(visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Box(
             modifier = modifier
-                .size(space_56)
-                .clip(shape = CircleShape)
+                .clip(RoundedCornerShape(28.dp))
                 .background(brush = gradient)
                 .clickable(
                     interactionSource = CreateMutableInteractionSource(),
@@ -40,15 +53,24 @@ fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier, onClick: () ->
                     onClick = onClick
                 )
         ) {
-            IconArrow(modifier = Modifier.align(Alignment.Center).size(24.dp))
+            Text(
+                text = text,
+                color = White_70,
+                style = Typography.titleMedium,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(vertical = 15.dp, horizontal = 38.dp),
+
+                )
         }
+
     }
 }
 
 
 @Preview
 @Composable
-fun ButtonNextPreview() {
-    ButtonNext(true, onClick = {})
+fun ButtonContinuePreview() {
+    ButtonContinue(true, text = "", onClick = {})
 
 }

@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.trivia.ui.screens.CategoryScreen
+import com.trivia.ui.screens.DifficultyScreen
 import com.trivia.ui.screens.ResultScreen
 import com.trivia.ui.theme.TriviaTheme
 import dagger.hilt.android.AndroidEntryPoint
