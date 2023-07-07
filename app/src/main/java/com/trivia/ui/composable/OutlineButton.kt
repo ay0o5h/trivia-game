@@ -23,12 +23,10 @@ import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.theme.RedDark
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_36
-import com.trivia.ui.theme.radius_28
 import com.trivia.ui.theme.radius_50
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_2
-import com.trivia.ui.theme.space_20
 
 @Composable
 fun OutlineButton(

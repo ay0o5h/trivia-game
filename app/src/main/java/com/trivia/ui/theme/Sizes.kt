@@ -21,9 +21,7 @@ val space_56 = 56.dp
 val space_140 = 140.dp
 val space_202 =202.dp
 val radius_50 = 50
-val radius_25 = 25
 val radius_80 =80
-val radius_28 = 28
 
 
 

@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import com.trivia.ui.theme.White_70
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_28
 import com.trivia.ui.theme.space_38
+import com.trivia.ui.theme.space_56
 
 
 @Composable
@@ -42,6 +44,7 @@ fun FillButton(
     AnimatedVisibility(visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Box(
             modifier = modifier
+                .height(space_56)
                 .clip(RoundedCornerShape(space_28))
                 .background(brush = gradient)
                 .clickable(
