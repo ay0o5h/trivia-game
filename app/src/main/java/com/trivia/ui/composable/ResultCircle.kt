@@ -1,4 +1,4 @@
-package com.trivia.ui.components
+package com.trivia.ui.composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box

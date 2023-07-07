@@ -5,23 +5,23 @@ import com.google.gson.annotations.SerializedName
 
 data class QuestionInfo(
     @SerializedName("category")
-    val category: String?,
+    val category: String? = null,
     @SerializedName("correctAnswer")
-    val correctAnswer: String?,
+    val correctAnswer: String? = null,
     @SerializedName("difficulty")
-    val difficulty: String?,
+    val difficulty: String? = null,
     @SerializedName("id")
-    val id: String?,
+    val id: String? = null,
     @SerializedName("incorrectAnswers")
-    val incorrectAnswers: List<String?>?,
+    val incorrectAnswers: List<String>? = null,
     @SerializedName("isNiche")
-    val isNiche: Boolean?,
+    val isNiche: Boolean? = null,
     @SerializedName("question")
-    val question: Question?,
+    val question: Question? = null,
     @SerializedName("regions")
-    val regions: List<String?>?,
+    val regions: List<String?>? = null,
     @SerializedName("tags")
-    val tags: List<String?>?,
+    val tags: List<String?>? = null,
     @SerializedName("type")
-    val type: String?
+    val type: String? = null
 )
