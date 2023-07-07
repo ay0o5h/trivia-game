@@ -11,9 +11,7 @@ import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.DifficultiesType
 import com.trivia.ui.screens.DifficultyScreen
 
-fun NavController.navigateToDifficultyScreen(category:String) {
-    navigate("$ROUTE/$category")
-}
+
 
 private const val ROUTE = "DifficultyScreen"
 fun NavGraphBuilder.difficultyScreenRoute(navController: NavController) {

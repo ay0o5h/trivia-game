@@ -5,7 +5,7 @@ import com.trivia.repository.model.DifficultiesType
 import com.trivia.viewmodel.state.Category
 import com.trivia.viewmodel.state.Difficulty
 
-object DataSource {
+object Data {
 
     val categories = listOf(
         Category("Music", CategoriesType.MUSIC),

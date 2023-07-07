@@ -1,7 +1,9 @@
 package com.trivia.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -16,16 +18,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.navigation.ScreensRoute
+import com.trivia.navigation.toCategory
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.ui.components.ResultCircle
-import com.trivia.ui.composable.PrimaryButton
-import com.trivia.ui.composable.ScreenBackground
+import com.trivia.ui.components.GradientCircle
+import com.trivia.ui.composable.ImageBackground
+import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.SpacerVertical20
 import com.trivia.ui.composable.SpacerVertical32
 import com.trivia.ui.composable.TextStyles
-import com.trivia.ui.composable.WinAnimation
+import com.trivia.ui.composable.Winfireworks
 import com.trivia.ui.theme.space_20
 import com.trivia.viewmodel.ResultViewModel
 import com.trivia.viewmodel.state.ResultUIState
@@ -38,7 +40,7 @@ fun ResultScreen(
     val state by viewModel.state.collectAsState()
     ResultContent(
         state=state,
-        onGoMainScreen = { navController.navigate(ScreensRoute.Category.route) },
+        onGoMainScreen = { navController.toCategory() },
         onTryAgain = { navController.navigateUp() },
     )
 }
@@ -51,10 +53,11 @@ fun ResultContent(
 ){
 
 
-    ScreenBackground {
-        WinAnimation(isWinner = state.isWinner)
-
-
+    Box (  modifier = Modifier
+        .fillMaxSize(),
+        contentAlignment = Alignment.Center) {
+        ImageBackground()
+        Winfireworks(isWinner = state.isWinner)
         Column(
             verticalArrangement= Arrangement.Center,
             horizontalAlignment =  Alignment.CenterHorizontally
@@ -66,7 +69,7 @@ fun ResultContent(
                 style = MaterialTheme.typography.titleLarge.merge(TextStyles.LargeTextStyle()),
             )
             SpacerVertical12()
-            ResultCircle( result = state.score)
+            GradientCircle( result = state.score)
             SpacerVertical20()
             Text(
                 modifier=Modifier.padding(horizontal = space_20),
@@ -77,16 +80,16 @@ fun ResultContent(
                 style = MaterialTheme.typography.titleMedium.merge(TextStyles.MeduimTextStyle()),
             )
             SpacerVertical32()
-            PrimaryButton(
+            OutlineButton(
                 text = stringResource(R.string.try_again) ,
-                buttonUIState = ButtonUIState.ClickedState
-            ) {
-                onTryAgain()
-            }
+                buttonUIState = ButtonUIState.ClickedState,
+                onClick = {onTryAgain()}
+            )
             SpacerVertical12()
-            PrimaryButton(text = stringResource(R.string.main_menu)) {
-                onGoMainScreen()
-                }
+            OutlineButton(
+                text = stringResource(R.string.main_menu),
+                onClick = {onGoMainScreen()}
+            )
         }
     }
 }

@@ -9,13 +9,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
+import com.trivia.R
 
 @Composable
-fun ImagesScreenDecor(modifier: Modifier = Modifier, header: Painter, footer: Painter) {
+fun ScreenWithHeaderAndFooterImages(modifier: Modifier = Modifier, header: Painter, footer: Painter) {
     Box(modifier = modifier.fillMaxSize()) {
         Image(
             painter = header,
-            contentDescription = "space",
+            contentDescription = stringResource(R.string.space),
             modifier = modifier
                 .fillMaxWidth()
                 .align(Alignment.TopCenter),
@@ -23,12 +25,11 @@ fun ImagesScreenDecor(modifier: Modifier = Modifier, header: Painter, footer: Pa
         )
         Image(
             painter = footer,
-            contentDescription = "space",
+            contentDescription = stringResource(R.string.space),
             modifier = modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter),
             contentScale = ContentScale.FillBounds
-
         )
     }
 }

@@ -14,19 +14,23 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.ui.composable.ButtonContinue
+import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.ImagesScreenDecor
-import com.trivia.ui.composable.PrimaryButton
+import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
+import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
+import com.trivia.ui.theme.space_16
+import com.trivia.ui.theme.space_202
+import com.trivia.ui.theme.space_48
 import com.trivia.viewmodel.DifficultyScreenInteractions
 import com.trivia.viewmodel.DifficultyViewModel
 import com.trivia.viewmodel.state.DifficultyUIState
@@ -48,10 +52,8 @@ fun DifficultyContent(
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-
         ImageBackground()
-
-        ImagesScreenDecor(
+        ScreenWithHeaderAndFooterImages(
             header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
                 id = R.drawable.group_space
             )
@@ -60,41 +62,33 @@ fun DifficultyContent(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                modifier = Modifier.padding(end = 20.dp, start = 20.dp, top = 202.dp),
-                text = "Choose your game level",
+                modifier = Modifier.padding(end = space_16, start = space_16, top = space_202),
+                text = stringResource(R.string.choose_your_game_level),
                 style = Typography.titleLarge,
                 color = White_87
             )
 
             LazyColumn(
                 modifier = Modifier.padding(top = space_12),
-                contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
                 items(state.difficulties) {
-                    PrimaryButton(
+                    OutlineButton(
                         text = it.title,
-                        modifier = Modifier.padding(top = 12.dp),
+                        modifier = Modifier.padding(top = space_12),
                         buttonUIState = it.buttonUIState
                     ) {
                         viewModel.onSelectDifficulty(it)
                     }
                 }
             }
-
-            ButtonContinue(
+            FillButton(
                 state.isButtonNextVisible,
-                modifier = Modifier.padding(top = 48.dp),
-                text = "Let's Go",
+                modifier = Modifier.padding(top = space_48),
+                text = stringResource(R.string.let_s_go),
                 onClick = {}
             )
-
-
-
         }
-
-
     }
-
 }
 
 

@@ -10,25 +10,16 @@ import com.trivia.ui.screens.CategoryScreen
 import com.trivia.ui.screens.ResultScreen
 import com.trivia.ui.screens.SplashScreen
 
+private const val START_DESTINATION ="splash"
+
 @Composable
 fun TriviaNavGraph(
     navController: NavHostController
 ){
-    NavHost(navController = navController, startDestination = ScreensRoute.Category.route) {
-        composable(ScreensRoute.Splash.route) {
-            SplashScreen(navController)
-        }
-        composable(
-            ScreensRoute.Result.route,
-            arguments = listOf(navArgument("score") {
-                NavType.IntType
-                defaultValue = 0
-            })) {
-            ResultScreen(navController)
-        }
-        composable(ScreensRoute.Category.route) {
-            CategoryScreen(navController)
-        }
+    NavHost(navController = navController, startDestination = START_DESTINATION) {
+        SplashScreenRoute(navController)
+        ResultScreenRoute(navController)
+        CategoryScreenRoute(navController)
         difficultyScreenRoute(navController)
     }
 }

@@ -2,7 +2,7 @@ package com.trivia.repository
 
 import com.trivia.remote.TriviaService
 import com.trivia.remote.response.QuestionInfo
-import com.trivia.repository.data.DataSource
+import com.trivia.repository.data.Data
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.CustomException
 import com.trivia.repository.model.DifficultiesType
@@ -21,11 +21,11 @@ class TriviaRepositoryImpl @Inject constructor(
     }
 
     override fun getCategories(): List<Category> {
-        return DataSource.categories
+        return Data.categories
     }
 
     override fun getDifficulty(): List<Difficulty> {
-        return DataSource.difficulties
+        return Data.difficulties
     }
 
     private suspend fun <T> wrapBaseResponse(
