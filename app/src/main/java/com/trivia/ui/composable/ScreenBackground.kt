@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.skydoves.cloudy.Cloudy
 import com.trivia.R
 import com.trivia.ui.theme.radius_25
+import com.trivia.ui.theme.radius_80
 
 @Composable
 fun ScreenBackground(
@@ -26,11 +27,9 @@ fun ScreenBackground(
     ) {
 
             Image(
-                modifier = Modifier.fillMaxWidth().fillMaxHeight().blur(radius = 80.dp),
+                modifier = Modifier.fillMaxWidth().fillMaxHeight().blur(radius = radius_80.dp),
                 painter = painterResource(id = R.drawable.background),
                 contentDescription = "")
-
-
         content()
     }
 }

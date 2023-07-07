@@ -11,13 +11,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.trivia.R
+import com.trivia.ui.theme.radius_80
 
 @Composable
 fun ImageBackground(modifier: Modifier = Modifier) {
     Image(
         modifier = modifier
             .fillMaxSize()
-            .blur(radius = 80.dp),
+            .blur(radius = radius_80.dp),
         painter = painterResource(id = R.drawable.background),
         contentDescription = "",
         contentScale = ContentScale.FillBounds

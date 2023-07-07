@@ -1,5 +1,6 @@
 package com.trivia.ui.composable
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
@@ -36,6 +37,7 @@ import com.trivia.ui.theme.space_20
 import com.trivia.ui.theme.space_24
 import com.trivia.ui.theme.space_56
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun WinAnimation(
     isWinner: Boolean = false,

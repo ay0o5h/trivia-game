@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.White36
+import com.trivia.ui.theme.space_24
 import com.trivia.ui.theme.space_56
 
 @Composable
@@ -44,7 +45,7 @@ fun CircleButton(
                     onClick = onClick
                 )
         ) {
-            IconArrowRight(modifier = Modifier.align(Alignment.Center).size(24.dp))
+            IconArrowRight(modifier = Modifier.align(Alignment.Center).size(space_24))
         }
     }
 }

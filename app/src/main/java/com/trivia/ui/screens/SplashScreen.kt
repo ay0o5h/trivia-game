@@ -26,7 +26,6 @@ fun SplashScreen(
     }
     SplashContent()
 }
-
 @Composable
 fun SplashContent() {
     Box(
