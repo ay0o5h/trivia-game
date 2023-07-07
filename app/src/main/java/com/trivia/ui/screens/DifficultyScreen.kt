@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.ui.composable.ButtonContinue
+import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.ImagesScreenDecor
 import com.trivia.ui.composable.PrimaryButton
@@ -81,20 +81,14 @@ fun DifficultyContent(
                 }
             }
 
-            ButtonContinue(
+            FillButton(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = 48.dp),
                 text = "Let's Go",
                 onClick = {}
             )
-
-
-
         }
-
-
     }
-
 }
 
 

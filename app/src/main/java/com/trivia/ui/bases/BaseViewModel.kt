@@ -9,7 +9,4 @@ abstract class BaseViewModel<S>(uiState:S) : ViewModel() {
 
     protected val _state: MutableStateFlow<S> by lazy { MutableStateFlow(uiState) }
     val state: StateFlow<S> by lazy { _state.asStateFlow() }
-
-
-
 }
