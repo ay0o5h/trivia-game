@@ -25,7 +25,7 @@ import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.SpacerVertical20
 import com.trivia.ui.composable.SpacerVertical32
 import com.trivia.ui.composable.TextStyles
-import com.trivia.ui.composable.WinAnimation
+import com.trivia.ui.composable.Winfireworks
 import com.trivia.ui.theme.space_20
 import com.trivia.viewmodel.ResultViewModel
 import com.trivia.viewmodel.state.ResultUIState
@@ -52,9 +52,7 @@ fun ResultContent(
 
 
     ScreenBackground {
-        WinAnimation(isWinner = state.isWinner)
-
-
+        Winfireworks(isWinner = state.isWinner)
         Column(
             verticalArrangement= Arrangement.Center,
             horizontalAlignment =  Alignment.CenterHorizontally
@@ -79,14 +77,14 @@ fun ResultContent(
             SpacerVertical32()
             OutlineButton(
                 text = stringResource(R.string.try_again) ,
-                buttonUIState = ButtonUIState.ClickedState
-            ) {
-                onTryAgain()
-            }
+                buttonUIState = ButtonUIState.ClickedState,
+                onClick = {onTryAgain()}
+            )
             SpacerVertical12()
-            OutlineButton(text = stringResource(R.string.main_menu)) {
-                onGoMainScreen()
-                }
+            OutlineButton(
+                text = stringResource(R.string.main_menu),
+                onClick = {onGoMainScreen()}
+            )
         }
     }
 }
