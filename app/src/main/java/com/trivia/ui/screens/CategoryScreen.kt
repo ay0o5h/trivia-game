@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -21,7 +22,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.navigateToDifficultyScreen
-import com.trivia.ui.composable.ButtonNext
+import com.trivia.ui.composable.CircleButton
+import com.trivia.ui.composable.IconArrowRight
 import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.ImagesScreenDecor
 import com.trivia.ui.composable.PrimaryButton
@@ -85,7 +87,7 @@ fun CategoryContent(
                 }
             }
 
-            ButtonNext(
+            CircleButton(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = 48.dp),
                 onClick = onNavigate

@@ -21,7 +21,11 @@ import com.trivia.ui.theme.White36
 import com.trivia.ui.theme.space_56
 
 @Composable
-fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun CircleButton(
+    isVisible: Boolean,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
     val gradient = Brush.linearGradient(
         colors = listOf(White36, PurpleDark),
         start = Offset(x = 0f, y = 150f),
@@ -40,7 +44,7 @@ fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier, onClick: () ->
                     onClick = onClick
                 )
         ) {
-            IconArrow(modifier = Modifier.align(Alignment.Center).size(24.dp))
+            IconArrowRight(modifier = Modifier.align(Alignment.Center).size(24.dp))
         }
     }
 }
@@ -49,6 +53,5 @@ fun ButtonNext(isVisible: Boolean, modifier: Modifier = Modifier, onClick: () ->
 @Preview
 @Composable
 fun ButtonNextPreview() {
-    ButtonNext(true, onClick = {})
-
+    CircleButton(true, onClick = {})
 }

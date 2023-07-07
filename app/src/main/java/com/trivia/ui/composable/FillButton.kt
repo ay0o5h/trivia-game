@@ -21,6 +21,9 @@ import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White36
 import com.trivia.ui.theme.White_70
+import com.trivia.ui.theme.space_15
+import com.trivia.ui.theme.space_28
+import com.trivia.ui.theme.space_38
 
 
 @Composable
@@ -39,7 +42,7 @@ fun FillButton(
     AnimatedVisibility(visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Box(
             modifier = modifier
-                .clip(RoundedCornerShape(28.dp))
+                .clip(RoundedCornerShape(space_28))
                 .background(brush = gradient)
                 .clickable(
                     interactionSource = CreateMutableInteractionSource(),
@@ -53,7 +56,7 @@ fun FillButton(
                 style = Typography.titleMedium,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(vertical = 15.dp, horizontal = 38.dp),
+                    .padding(vertical = space_15, horizontal = space_38),
 
                 )
         }

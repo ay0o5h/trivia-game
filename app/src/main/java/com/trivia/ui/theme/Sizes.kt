@@ -11,7 +11,11 @@ val space_12= 12.dp
 val space_15= 15.dp
 val space_16= 16.dp
 val space_20= 20.dp
+val space_28= 28.dp
+
 val space_32 = 32.dp
+val space_38 = 38.dp
+
 val space_56 = 56.dp
 val space_140 = 140.dp
 val radius_50 = 50

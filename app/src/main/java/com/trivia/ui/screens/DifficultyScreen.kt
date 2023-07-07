@@ -49,9 +49,7 @@ fun DifficultyContent(
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-
         ImageBackground()
-
         ImagesScreenDecor(
             header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
                 id = R.drawable.group_space
