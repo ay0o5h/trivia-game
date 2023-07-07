@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.navigation.ScreensRoute
+import com.trivia.navigation.toCategory
 import com.trivia.ui.composable.ImageBackground
 import kotlinx.coroutines.delay
 
@@ -22,7 +22,7 @@ fun SplashScreen(
 ) {
     LaunchedEffect(Unit) {
         delay(1000)
-        navController.navigate(ScreensRoute.Category.route)
+        navController.toCategory()
     }
     SplashContent()
 }

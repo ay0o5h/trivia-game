@@ -14,12 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.navigation.ScreensRoute
+import com.trivia.navigation.toCategory
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.components.GradientCircle
 import com.trivia.ui.composable.ImageBackground
@@ -41,7 +40,7 @@ fun ResultScreen(
     val state by viewModel.state.collectAsState()
     ResultContent(
         state=state,
-        onGoMainScreen = { navController.navigate(ScreensRoute.Category.route) },
+        onGoMainScreen = { navController.toCategory() },
         onTryAgain = { navController.navigateUp() },
     )
 }
@@ -54,7 +53,7 @@ fun ResultContent(
 ){
 
 
-    Box (        modifier = Modifier
+    Box (  modifier = Modifier
         .fillMaxSize(),
         contentAlignment = Alignment.Center) {
         ImageBackground()
