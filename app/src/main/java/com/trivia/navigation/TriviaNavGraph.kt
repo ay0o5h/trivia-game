@@ -14,7 +14,7 @@ import com.trivia.ui.screens.SplashScreen
 fun TriviaNavGraph(
     navController: NavHostController
 ){
-    NavHost(navController = navController, startDestination = ScreensRoute.Category.route) {
+    NavHost(navController = navController, startDestination = ScreensRoute.Splash.route) {
         composable(ScreensRoute.Splash.route) {
             SplashScreen(navController)
         }
