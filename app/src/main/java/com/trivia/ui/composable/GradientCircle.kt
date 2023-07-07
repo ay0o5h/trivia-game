@@ -26,7 +26,7 @@ import com.trivia.ui.theme.space_140
 import com.trivia.ui.theme.space_4
 
 @Composable
-fun ResultCircle(
+fun GradientCircle(
     result: Int
 ) {
     Surface(
@@ -61,5 +61,5 @@ fun ResultCircle(
 @Preview
 @Composable
 fun ResultCirclePrev() {
-    ResultCircle(8)
+    GradientCircle(8)
 }

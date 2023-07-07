@@ -18,7 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.ScreensRoute
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.ui.components.ResultCircle
+import com.trivia.ui.components.GradientCircle
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.ScreenBackground
 import com.trivia.ui.composable.SpacerVertical12
@@ -66,7 +66,7 @@ fun ResultContent(
                 style = MaterialTheme.typography.titleLarge.merge(TextStyles.LargeTextStyle()),
             )
             SpacerVertical12()
-            ResultCircle( result = state.score)
+            GradientCircle( result = state.score)
             SpacerVertical20()
             Text(
                 modifier=Modifier.padding(horizontal = space_20),
