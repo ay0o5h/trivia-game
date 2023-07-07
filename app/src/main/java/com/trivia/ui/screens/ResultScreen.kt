@@ -16,7 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
-import com.trivia.ScreensRoute
+import com.trivia.navigation.ScreensRoute
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.components.ResultCircle
 import com.trivia.ui.composable.PrimaryButton

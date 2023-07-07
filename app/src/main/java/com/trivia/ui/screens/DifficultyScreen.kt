@@ -1,6 +1,5 @@
 package com.trivia.ui.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,39 +7,36 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.ui.composable.ButtonContinue
-import com.trivia.ui.composable.ButtonNext
+import com.trivia.ui.composable.ImageBackground
+import com.trivia.ui.composable.ImagesScreenDecor
 import com.trivia.ui.composable.PrimaryButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
-import com.trivia.viewmodel.CategoryViewModel
 import com.trivia.viewmodel.DifficultyScreenInteractions
-import com.trivia.viewmodel.state.CategoryUIState
+import com.trivia.viewmodel.DifficultyViewModel
 import com.trivia.viewmodel.state.DifficultyUIState
 
 @Composable
 fun DifficultyScreen(
-    navController: NavHostController,
-    viewModel: CategoryViewModel = hiltViewModel()
+    navController: NavController,
+    viewModel: DifficultyViewModel = hiltViewModel()
 ) {
-    val state by viewModel.stateDifficulty.collectAsState()
+    val state by viewModel.state.collectAsState()
     DifficultyContent(state, viewModel)
 }
 
@@ -52,15 +48,14 @@ fun DifficultyContent(
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxSize()
-                .blur(40.dp),
-            painter = painterResource(id = R.drawable.background),
-            contentScale = ContentScale.FillBounds,
-            contentDescription = "background image"
-        )
 
+        ImageBackground()
+
+        ImagesScreenDecor(
+            header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
+                id = R.drawable.group_space
+            )
+        )
         Column(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {

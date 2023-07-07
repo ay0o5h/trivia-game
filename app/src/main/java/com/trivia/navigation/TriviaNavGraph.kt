@@ -1,4 +1,4 @@
-package com.trivia
+package com.trivia.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -7,7 +7,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.trivia.ui.screens.CategoryScreen
-import com.trivia.ui.screens.DifficultyScreen
 import com.trivia.ui.screens.ResultScreen
 import com.trivia.ui.screens.SplashScreen
 
@@ -30,9 +29,7 @@ fun TriviaNavGraph(
         composable(ScreensRoute.Category.route) {
             CategoryScreen(navController)
         }
-        composable(ScreensRoute.Difficulty.route) {
-            DifficultyScreen(navController)
-        }
+        difficultyScreenRoute(navController)
     }
 }
 
