@@ -24,6 +24,7 @@ import com.trivia.ui.theme.RedDark
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_36
 import com.trivia.ui.theme.radius_28
+import com.trivia.ui.theme.radius_50
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_2
@@ -62,17 +63,17 @@ fun OutlineButton(
         ),
         contentPadding = PaddingValues(vertical = space_15),
         onClick = onClick,
-        shape= RoundedCornerShape(percent = radius_28),
+        shape= RoundedCornerShape(percent = radius_50),
         modifier = modifier
             .fillMaxWidth(fraction = fraction)
             .padding(horizontal = space_16)
             .border(
                 width = space_2,
                 color = borderColor,
-                shape = RoundedCornerShape(percent = radius_28)
+                shape = RoundedCornerShape(percent = radius_50)
             )
             .background(
-                color = buttonColor, shape = RoundedCornerShape(percent = radius_28)
+                color = buttonColor, shape = RoundedCornerShape(percent = radius_50)
             )
 
     ) {

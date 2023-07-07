@@ -23,7 +23,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.navigateToDifficultyScreen
-import com.trivia.ui.composable.CircleButton
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.IconArrowRight
 import com.trivia.ui.composable.ImageBackground
