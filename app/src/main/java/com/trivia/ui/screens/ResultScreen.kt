@@ -1,7 +1,9 @@
 package com.trivia.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -12,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -19,8 +22,8 @@ import com.trivia.R
 import com.trivia.navigation.ScreensRoute
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.components.GradientCircle
+import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.ui.composable.ScreenBackground
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.SpacerVertical20
 import com.trivia.ui.composable.SpacerVertical32
@@ -51,7 +54,10 @@ fun ResultContent(
 ){
 
 
-    ScreenBackground {
+    Box (        modifier = Modifier
+        .fillMaxSize(),
+        contentAlignment = Alignment.Center) {
+        ImageBackground()
         Winfireworks(isWinner = state.isWinner)
         Column(
             verticalArrangement= Arrangement.Center,

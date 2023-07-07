@@ -89,17 +89,13 @@ fun CategoryContent(
                     }
                 }
             }
-
             FillButton(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = space_48),
                 text = stringResource(R.string.next),
                 onClick = onNavigate
             )
-
         }
-
-
     }
 }
 
