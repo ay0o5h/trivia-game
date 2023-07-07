@@ -25,8 +25,8 @@ import com.trivia.navigation.navigateToDifficultyScreen
 import com.trivia.ui.composable.CircleButton
 import com.trivia.ui.composable.IconArrowRight
 import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.ImagesScreenDecor
-import com.trivia.ui.composable.PrimaryButton
+import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
+import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
@@ -56,7 +56,7 @@ fun CategoryContent(
 
         ImageBackground()
 
-        ImagesScreenDecor(
+        ScreenWithHeaderAndFooterImages(
             header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
                 id = R.drawable.group_space
             )
@@ -77,7 +77,7 @@ fun CategoryContent(
                 contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
                 items(state.categories) {
-                    PrimaryButton(
+                    OutlineButton(
                         text = it.title,
                         modifier = Modifier.padding(top = 12.dp),
                         buttonUIState = it.buttonUIState

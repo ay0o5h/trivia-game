@@ -19,7 +19,7 @@ import com.trivia.R
 import com.trivia.navigation.ScreensRoute
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.components.ResultCircle
-import com.trivia.ui.composable.PrimaryButton
+import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.ScreenBackground
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.SpacerVertical20
@@ -77,14 +77,14 @@ fun ResultContent(
                 style = MaterialTheme.typography.titleMedium.merge(TextStyles.MeduimTextStyle()),
             )
             SpacerVertical32()
-            PrimaryButton(
+            OutlineButton(
                 text = stringResource(R.string.try_again) ,
                 buttonUIState = ButtonUIState.ClickedState
             ) {
                 onTryAgain()
             }
             SpacerVertical12()
-            PrimaryButton(text = stringResource(R.string.main_menu)) {
+            OutlineButton(text = stringResource(R.string.main_menu)) {
                 onGoMainScreen()
                 }
         }
