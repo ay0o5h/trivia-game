@@ -28,6 +28,9 @@ import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
+import com.trivia.ui.theme.space_16
+import com.trivia.ui.theme.space_202
+import com.trivia.ui.theme.space_48
 import com.trivia.viewmodel.DifficultyScreenInteractions
 import com.trivia.viewmodel.DifficultyViewModel
 import com.trivia.viewmodel.state.DifficultyUIState
@@ -59,7 +62,7 @@ fun DifficultyContent(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                modifier = Modifier.padding(end = 20.dp, start = 20.dp, top = 202.dp),
+                modifier = Modifier.padding(end = space_16, start = space_16, top = space_202),
                 text = stringResource(R.string.choose_your_game_level),
                 style = Typography.titleLarge,
                 color = White_87
@@ -67,22 +70,20 @@ fun DifficultyContent(
 
             LazyColumn(
                 modifier = Modifier.padding(top = space_12),
-                contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
                 items(state.difficulties) {
                     OutlineButton(
                         text = it.title,
-                        modifier = Modifier.padding(top = 12.dp),
+                        modifier = Modifier.padding(top = space_12),
                         buttonUIState = it.buttonUIState
                     ) {
                         viewModel.onSelectDifficulty(it)
                     }
                 }
             }
-
             FillButton(
                 state.isButtonNextVisible,
-                modifier = Modifier.padding(top = 48.dp),
+                modifier = Modifier.padding(top = space_48),
                 text = stringResource(R.string.let_s_go),
                 onClick = {}
             )
