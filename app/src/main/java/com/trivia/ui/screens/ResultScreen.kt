@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.toCategory
+import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.components.GradientCircle
 import com.trivia.ui.composable.ImageBackground
@@ -41,7 +42,10 @@ fun ResultScreen(
     ResultContent(
         state=state,
         onGoMainScreen = { navController.toCategory() },
-        onTryAgain = { navController.navigateUp() },
+        onTryAgain = { navController.toQuestionsScreen(
+            viewModel.args.category,
+            viewModel.args.difficulty
+        ) },
     )
 }
 

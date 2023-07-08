@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ResultViewModel @Inject constructor (
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<ResultUIState>(ResultUIState()){
-    private val args : ResultScreenArgs = ResultScreenArgs(savedStateHandle)
+    val args : ResultScreenArgs = ResultScreenArgs(savedStateHandle)
 
     init{
         getResult()
@@ -27,7 +27,7 @@ class ResultViewModel @Inject constructor (
         }
     }
    private fun itIsWinner() : Boolean{
-       if(args.score > 5){
+       if(args.score >=  5){
            return  true
        }
        return false

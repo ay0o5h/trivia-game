@@ -86,7 +86,7 @@ fun QuestionsScreenContent(
                     AnimatedTimerProgress(
                         Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = space_16),
+                            .padding(horizontal = space_16, vertical = space_8),
                         currentTime = state.currentTime,
                         maxTime = state.maxTime
                     )
@@ -97,7 +97,7 @@ fun QuestionsScreenContent(
                     style = Typography.titleLarge,
                     color = White_87,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = space_16)
+                    modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
                 )
 
                 Choices(state, listener)

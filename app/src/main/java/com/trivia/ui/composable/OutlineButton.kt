@@ -59,7 +59,7 @@ fun OutlineButton(
             containerColor = Transparent,
             contentColor = Color.White,
         ),
-        contentPadding = PaddingValues(vertical = space_15),
+        contentPadding = PaddingValues(vertical = space_15, horizontal = space_16),
         onClick = onClick,
         shape= RoundedCornerShape(percent = radius_50),
         modifier = modifier
