@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.trivia.R
 
 @Composable
-fun ScreenWithHeaderAndFooterImages(modifier: Modifier = Modifier, header: Painter, footer: Painter) {
+fun ScreenWithHeaderAndFooterImages(modifier: Modifier = Modifier, header: Painter, footer: Painter?=null) {
     Box(modifier = modifier.fillMaxSize()) {
         Image(
             painter = header,
@@ -23,13 +23,15 @@ fun ScreenWithHeaderAndFooterImages(modifier: Modifier = Modifier, header: Paint
                 .align(Alignment.TopCenter),
             contentScale = ContentScale.FillBounds
         )
-        Image(
-            painter = footer,
-            contentDescription = stringResource(R.string.space),
-            modifier = modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter),
-            contentScale = ContentScale.FillBounds
-        )
+        footer?.let {
+            Image(
+                painter = it,
+                contentDescription = stringResource(R.string.space),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter),
+                contentScale = ContentScale.FillBounds
+            )
+        }
     }
 }

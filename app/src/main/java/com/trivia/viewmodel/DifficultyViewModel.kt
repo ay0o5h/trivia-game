@@ -2,20 +2,14 @@ package com.trivia.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.trivia.navigation.DifficultyScreenArgs
 import com.trivia.repository.TriviaRepository
-import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.DifficultiesType
 import com.trivia.ui.bases.BaseViewModel
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.viewmodel.state.Category
-import com.trivia.viewmodel.state.CategoryUIState
 import com.trivia.viewmodel.state.Difficulty
 import com.trivia.viewmodel.state.DifficultyUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
@@ -25,7 +19,7 @@ class DifficultyViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<DifficultyUIState>(DifficultyUIState()), DifficultyScreenInteractions {
 
-    val args = DifficultyScreenArgs(savedStateHandle).category
+    val category = DifficultyScreenArgs(savedStateHandle).category
 
     init {
         getData()

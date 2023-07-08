@@ -2,13 +2,7 @@ package com.trivia.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import com.trivia.ui.screens.CategoryScreen
-import com.trivia.ui.screens.ResultScreen
-import com.trivia.ui.screens.SplashScreen
 
 private const val START_DESTINATION ="splash"
 
@@ -21,6 +15,7 @@ fun TriviaNavGraph(
         ResultScreenRoute(navController)
         CategoryScreenRoute(navController)
         difficultyScreenRoute(navController)
+        questionsScreenRoute(navController)
     }
 }
 
