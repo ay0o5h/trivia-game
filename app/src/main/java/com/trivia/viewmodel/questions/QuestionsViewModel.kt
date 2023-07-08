@@ -18,7 +18,7 @@ import javax.inject.Inject
 class QuestionsViewModel @Inject constructor(
     private val triviaRepository: TriviaRepository,
     savedStateHandle: SavedStateHandle,
-) : BaseViewModel<QuestionsUiState>(QuestionsUiState()) {
+) : BaseViewModel<QuestionsUiState>(QuestionsUiState()), QuestionsInteractionsListener{
     private val args = QuestionsScreenArgs(savedStateHandle)
 
     // region get all questions
@@ -89,6 +89,14 @@ class QuestionsViewModel @Inject constructor(
             _state.update { it.copy(currentQuestionNumber = it.currentQuestionNumber + 1) }
             startTimer()
         }
+    }
+
+    override fun onClickAnswer(answer: String) {
+        changeSelectedAnswer(answer)
+    }
+
+    override fun onClickSubmit() {
+        submit()
     }
     // endregion
 
