@@ -10,4 +10,6 @@
     <string name="arrowright">arrowright</string>
     <string name="space">space</string>
     <string name="next">Next</string>
+    <string name="question">Question </string>
+    <string name="submit">Submit</string>
 </resources>
