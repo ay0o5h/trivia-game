@@ -2,7 +2,6 @@ package com.trivia.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,15 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
+import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.composable.OutlineButton
+import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
@@ -41,11 +40,21 @@ fun DifficultyScreen(
     viewModel: DifficultyViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    DifficultyContent(state, viewModel)
+    DifficultyContent(
+        navigateToQuestionsScreen = {
+            navController.toQuestionsScreen(
+                viewModel.category,
+                state.selectedDifficulty
+            )
+        },
+        state,
+        viewModel
+    )
 }
 
 @Composable
 fun DifficultyContent(
+    navigateToQuestionsScreen: () -> Unit,
     state: DifficultyUIState,
     viewModel: DifficultyScreenInteractions
 ) {
@@ -85,7 +94,7 @@ fun DifficultyContent(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = space_48),
                 text = stringResource(R.string.let_s_go),
-                onClick = {}
+                onClick = navigateToQuestionsScreen
             )
         }
     }
