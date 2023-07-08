@@ -6,6 +6,7 @@ import com.trivia.navigation.QuestionsScreenArgs
 import com.trivia.remote.response.QuestionInfo
 import com.trivia.repository.TriviaRepository
 import com.trivia.ui.bases.BaseViewModel
+import com.trivia.ui.bases.ButtonUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,8 +19,8 @@ import javax.inject.Inject
 class QuestionsViewModel @Inject constructor(
     private val triviaRepository: TriviaRepository,
     savedStateHandle: SavedStateHandle,
-) : BaseViewModel<QuestionsUiState>(QuestionsUiState()), QuestionsInteractionsListener{
-    private val args = QuestionsScreenArgs(savedStateHandle)
+) : BaseViewModel<QuestionsUiState>(QuestionsUiState()), QuestionsInteractionsListener {
+    val args = QuestionsScreenArgs(savedStateHandle)
 
     // region get all questions
     init {
@@ -33,6 +34,7 @@ class QuestionsViewModel @Inject constructor(
                     triviaRepository.getQuestions(args.category, args.difficulty)
                         .toQuestionsUiState()
                 _state.update { it.copy(questions = questionsUiState) }
+                startTimer()
             }.onFailure {
                 // todo: handle error state
             }
@@ -62,12 +64,7 @@ class QuestionsViewModel @Inject constructor(
 
     // region interactions
     private fun changeSelectedAnswer(answer: String) {
-        val currentQuestion = state.value.currentQuestion
-        _state.update {
-            it.apply {
-                this.currentQuestion = currentQuestion.copy(selectedAnswer = answer)
-            }
-        }
+        _state.update { it.copy(selectedAnswer = answer) }
     }
 
     private fun submit() {
@@ -77,16 +74,41 @@ class QuestionsViewModel @Inject constructor(
     }
 
     private fun checkIfCorrectAnswer() {
-        if (state.value.isCorrectAnswer) {
+        viewModelScope.launch {
+            if (state.value.isCorrectAnswer) {
+                _state.update {
+                    it.copy(
+                        selectedAnswerState = ButtonUIState.CorrectState,
+                        passedQuestion = it.passedQuestion + 1,
+                        showCorrect = true
+                    )
+                }
+            } else {
+                _state.update {
+                    it.copy(
+                        selectedAnswerState = ButtonUIState.ErrorState,
+                        showCorrect = true
+                    )
+                }
+            }
+            delay(500)
             nextQuestionOrNavigate()
         }
     }
 
     private fun nextQuestionOrNavigate() {
-        if (state.value.isLastQuestion && state.value.isCorrectAnswer) {
+        if (state.value.isLastQuestion) {
             _state.update { it.copy(shouldNavigate = true) }
         } else {
-            _state.update { it.copy(currentQuestionNumber = it.currentQuestionNumber + 1) }
+            _state.update {
+                it.copy(
+                    currentQuestionNumber = it.currentQuestionNumber + 1,
+                    selectedAnswer = null,
+                    selectedAnswerState = null,
+                    showCorrect = false
+                )
+            }
+            timer?.cancel()
             startTimer()
         }
     }
@@ -99,8 +121,6 @@ class QuestionsViewModel @Inject constructor(
         submit()
     }
     // endregion
-
-
 }
 
 private fun List<QuestionInfo>.toQuestionsUiState(): List<QuestionsUiState.QuestionUiState> {

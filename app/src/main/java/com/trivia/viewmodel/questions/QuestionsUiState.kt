@@ -1,5 +1,7 @@
 package com.trivia.viewmodel.questions
 
+import com.trivia.ui.bases.ButtonUIState
+
 data class QuestionsUiState(
     val questions: List<QuestionUiState> = emptyList(),
     val currentQuestionNumber: Int = 1,
@@ -8,23 +10,25 @@ data class QuestionsUiState(
     val currentTime: Int = 0,
     val maxTime: Int = 30,
     val shouldNavigate: Boolean = false,
+    val selectedAnswer: String? = null,
+    val selectedAnswerState: ButtonUIState? = null,
+    val showCorrect: Boolean = false,
 ) {
     data class QuestionUiState(
         val question: String = "",
         val correctAnswer: String = "",
         val otherAnswers: List<String> = emptyList(),
-        val selectedAnswer: String? = null,
         val optionsAfterShuffled: List<String> = emptyList()
     )
 
-    var currentQuestion: QuestionUiState = QuestionUiState()
+    val currentQuestion: QuestionUiState
         get() = if (questions.isNotEmpty()) questions[currentQuestionNumber - 1] else QuestionUiState()
 
     val hasSubmitButton: Boolean
-        get() = currentQuestion.selectedAnswer != null
+        get() = selectedAnswer != null
 
     val isCorrectAnswer
-        get() = currentQuestion.selectedAnswer == currentQuestion.correctAnswer
+        get() = selectedAnswer == currentQuestion.correctAnswer
 
     val isLastQuestion
         get() = currentQuestionNumber == questions.size
