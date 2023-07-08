@@ -15,33 +15,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.trivia.R
 import com.trivia.navigation.toResultScreen
-import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.screens.questions.composables.AnimatedTimerProgress
+import com.trivia.ui.screens.questions.composables.Choices
+import com.trivia.ui.screens.questions.composables.QuestionNumber
 import com.trivia.ui.theme.TriviaTheme
 import com.trivia.ui.theme.Typography
-import com.trivia.ui.theme.White_60
 import com.trivia.ui.theme.White_87
-import com.trivia.ui.theme.fontSize_16
 import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_24
 import com.trivia.ui.theme.space_8
@@ -122,55 +114,6 @@ fun QuestionsScreenContent(
             )
         }
 
-    }
-}
-
-@Composable
-fun QuestionNumber(
-    questionNumber: Int,
-    totalQuestionsCount: Int
-) {
-    Text(text = buildAnnotatedString {
-        append(stringResource(id = R.string.question))
-        append(" $questionNumber")
-        withStyle(SpanStyle(fontSize = fontSize_16)) {
-            append("/$totalQuestionsCount")
-        }
-    }, style = Typography.titleLarge, color = White_60)
-}
-
-@Composable
-fun Choices(
-    state: QuestionsUiState,
-    listener: QuestionsInteractionsListener,
-    modifier: Modifier = Modifier
-) {
-    val buttonsStateList = remember { mutableStateMapOf<String, ButtonUIState>() }
-
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        state.currentQuestion.optionsAfterShuffled.forEach {
-            val buttonUIState = buttonsStateList[it] ?: ButtonUIState.StartState
-
-            OutlineButton(
-                text = it,
-                onClick = { listener.onClickAnswer(it) },
-                buttonUIState = buttonUIState,
-            )
-        }
-    }
-
-    state.selectedAnswer?.let { answer ->
-        buttonsStateList[answer] = state.selectedAnswerState ?: ButtonUIState.ClickedState
-        buttonsStateList.forEach { (t, _) ->
-            if (answer != t) buttonsStateList[t] = ButtonUIState.StartState
-        }
-    }
-
-    if (state.showCorrect && state.selectedAnswer != null) {
-        buttonsStateList[state.currentQuestion.correctAnswer] = ButtonUIState.CorrectState
     }
 }
 
