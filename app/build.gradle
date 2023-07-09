@@ -97,4 +97,6 @@ dependencies {
     //dagger hilt
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-android-compiler:2.44"
+    def accompanistVersion = "0.30.0"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion"
 }
