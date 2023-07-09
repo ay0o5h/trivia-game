@@ -2,8 +2,8 @@ package com.trivia.repository.data
 
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.DifficultiesType
-import com.trivia.viewmodel.state.Category
-import com.trivia.viewmodel.state.Difficulty
+import com.trivia.ui.screens.category.Category
+import com.trivia.ui.screens.difficulty.Difficulty
 
 object Data {
 

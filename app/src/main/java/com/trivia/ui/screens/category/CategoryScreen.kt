@@ -1,14 +1,9 @@
 package com.trivia.ui.screens.category
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,15 +20,10 @@ import com.trivia.navigation.navigateToDifficultyScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
-import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.TextHeader
 import com.trivia.ui.screens.category.composable.composable.CategoryChoices
-import com.trivia.ui.theme.space_12
 import com.trivia.ui.theme.space_48
-import com.trivia.viewmodel.category.CategoryScreenInteractions
-import com.trivia.viewmodel.category.CategoryViewModel
-import com.trivia.viewmodel.state.CategoryUIState
 
 @Composable
 fun CategoryScreen(

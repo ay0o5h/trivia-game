@@ -1,9 +1,9 @@
-package com.trivia.viewmodel.result
+package com.trivia.ui.screens.result
 
 import androidx.lifecycle.SavedStateHandle
 import com.trivia.navigation.ResultScreenArgs
 import com.trivia.ui.bases.BaseViewModel
-import com.trivia.viewmodel.state.ResultUIState
+import com.trivia.ui.screens.result.ResultUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

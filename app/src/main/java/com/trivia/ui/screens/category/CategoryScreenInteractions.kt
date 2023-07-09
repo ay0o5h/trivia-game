@@ -1,6 +1,4 @@
-package com.trivia.viewmodel.category
-
-import com.trivia.viewmodel.state.Category
+package com.trivia.ui.screens.category
 
 interface CategoryScreenInteractions {
     fun onSelectCategory(passedCategory: Category)

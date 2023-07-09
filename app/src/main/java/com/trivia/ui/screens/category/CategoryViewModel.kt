@@ -1,12 +1,10 @@
-package com.trivia.viewmodel.category
+package com.trivia.ui.screens.category
 
 import android.util.Log
 import com.trivia.repository.TriviaRepository
 import com.trivia.repository.model.CategoriesType
 import com.trivia.ui.bases.BaseViewModel
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.viewmodel.state.Category
-import com.trivia.viewmodel.state.CategoryUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

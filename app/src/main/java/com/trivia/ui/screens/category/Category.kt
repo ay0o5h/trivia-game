@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.state
+package com.trivia.ui.screens.category
 
 import com.trivia.repository.model.CategoriesType
 import com.trivia.ui.bases.ButtonUIState

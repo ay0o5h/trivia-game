@@ -11,7 +11,7 @@ import com.trivia.ui.screens.splash.SplashScreen
 
 private const  val  ROUTE ="splash"
 
-fun NavGraphBuilder.SplashScreenRoute(navController: NavController){
+fun NavGraphBuilder.splashScreenRoute(navController: NavController){
     composable(
        route= ROUTE,
     )
@@ -20,6 +20,3 @@ fun NavGraphBuilder.SplashScreenRoute(navController: NavController){
     }
 }
 
-fun NavController.toSplash(){
-    navigate(ROUTE)
-}

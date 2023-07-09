@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.theme.space_12
-import com.trivia.viewmodel.difficulty.DifficultyScreenInteractions
-import com.trivia.viewmodel.state.DifficultyUIState
+import com.trivia.ui.screens.difficulty.DifficultyScreenInteractions
+import com.trivia.ui.screens.difficulty.DifficultyUIState
 
 @Composable
 fun DifficultyChoices(state: DifficultyUIState, viewModel: DifficultyScreenInteractions) {

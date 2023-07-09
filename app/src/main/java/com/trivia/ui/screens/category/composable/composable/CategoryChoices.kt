@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.theme.space_12
-import com.trivia.viewmodel.category.CategoryScreenInteractions
-import com.trivia.viewmodel.state.CategoryUIState
+import com.trivia.ui.screens.category.CategoryScreenInteractions
+import com.trivia.ui.screens.category.CategoryUIState
 
 @Composable
 fun CategoryChoices(state: CategoryUIState, viewModel: CategoryScreenInteractions) {

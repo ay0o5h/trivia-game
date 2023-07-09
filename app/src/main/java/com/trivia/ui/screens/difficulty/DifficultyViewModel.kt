@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.difficulty
+package com.trivia.ui.screens.difficulty
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
@@ -7,8 +7,6 @@ import com.trivia.repository.TriviaRepository
 import com.trivia.repository.model.DifficultiesType
 import com.trivia.ui.bases.BaseViewModel
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.viewmodel.state.Difficulty
-import com.trivia.viewmodel.state.DifficultyUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

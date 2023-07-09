@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.toCategory
 import com.trivia.ui.composable.ImageBackground
+import com.trivia.ui.composable.MainScaffold
 import kotlinx.coroutines.delay
 
 @Composable
@@ -28,17 +29,11 @@ fun SplashScreen(
 }
 @Composable
 fun SplashContent() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        ImageBackground()
+    MainScaffold {
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = ""
         )
-
     }
 }
 

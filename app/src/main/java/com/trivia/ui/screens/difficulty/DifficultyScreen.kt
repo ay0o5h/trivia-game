@@ -1,12 +1,9 @@
 package com.trivia.ui.screens.difficulty
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,16 +19,11 @@ import com.trivia.R
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.TextHeader
 import com.trivia.ui.screens.difficulty.composable.DifficultyChoices
-import com.trivia.ui.theme.space_12
 import com.trivia.ui.theme.space_48
-import com.trivia.viewmodel.difficulty.DifficultyScreenInteractions
-import com.trivia.viewmodel.difficulty.DifficultyViewModel
-import com.trivia.viewmodel.state.DifficultyUIState
 
 @Composable
 fun DifficultyScreen(

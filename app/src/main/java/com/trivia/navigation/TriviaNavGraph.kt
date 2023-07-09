@@ -11,9 +11,9 @@ fun TriviaNavGraph(
     navController: NavHostController
 ){
     NavHost(navController = navController, startDestination = START_DESTINATION) {
-        SplashScreenRoute(navController)
-        ResultScreenRoute(navController)
-        CategoryScreenRoute(navController)
+        splashScreenRoute(navController)
+        resultScreenRoute(navController)
+        categoryScreenRoute(navController)
         difficultyScreenRoute(navController)
         questionsScreenRoute(navController)
     }

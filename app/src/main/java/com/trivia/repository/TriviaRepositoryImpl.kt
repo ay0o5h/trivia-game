@@ -6,8 +6,8 @@ import com.trivia.repository.data.Data
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.CustomException
 import com.trivia.repository.model.DifficultiesType
-import com.trivia.viewmodel.state.Category
-import com.trivia.viewmodel.state.Difficulty
+import com.trivia.ui.screens.category.Category
+import com.trivia.ui.screens.difficulty.Difficulty
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject

@@ -12,6 +12,7 @@ import com.trivia.ui.composable.OutlineButton
 import com.trivia.viewmodel.questions.QuestionsInteractionsListener
 import com.trivia.viewmodel.questions.QuestionsUiState
 
+
 @Composable
 fun Choices(
     state: QuestionsUiState,

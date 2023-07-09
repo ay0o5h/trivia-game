@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.state
+package com.trivia.ui.screens.result
 
 data class ResultUIState(
     val score: Int = 0,

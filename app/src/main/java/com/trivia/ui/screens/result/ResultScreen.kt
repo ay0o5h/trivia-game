@@ -30,8 +30,6 @@ import com.trivia.ui.composable.SpacerVertical32
 import com.trivia.ui.composable.TextStyles
 import com.trivia.ui.composable.Winfireworks
 import com.trivia.ui.theme.space_20
-import com.trivia.viewmodel.result.ResultViewModel
-import com.trivia.viewmodel.state.ResultUIState
 
 @Composable
 fun ResultScreen(
@@ -52,8 +50,8 @@ fun ResultScreen(
 @Composable
 fun ResultContent(
     state: ResultUIState,
-    onGoMainScreen:()->Unit ,
-    onTryAgain:()->Unit ,
+    onGoMainScreen:()->Unit,
+    onTryAgain:()->Unit,
 ){
 
 
