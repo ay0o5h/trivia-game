@@ -1,5 +1,6 @@
 package com.trivia.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -79,7 +80,10 @@ fun DifficultyContent(
 
             LazyColumn(
                 modifier = Modifier.padding(top = space_12),
-            ) {
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+
+                ) {
                 items(state.difficulties) {
                     OutlineButton(
                         text = it.title,
