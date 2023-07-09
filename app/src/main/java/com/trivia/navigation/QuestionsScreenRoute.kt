@@ -44,14 +44,7 @@ class QuestionsScreenArgs(savedStateHandle: SavedStateHandle) {
 }
 
 fun NavController.toQuestionsScreen(type: CategoriesType, difficultiesType: DifficultiesType) {
-    try {
-        navigate("$ROUTE/${type.name}/${difficultiesType.name}".also {
-            Log.e(
-                "TAGTAG",
-                "toQuestionsScreen: $it",
-
-                ) })
-    }catch (e:Exception){
-        Log.e("TAGTAG", "toQuestionsScreen: $e", )
-    }
+        navigate("$ROUTE/${type.name}/${difficultiesType.name}"){
+            popBackStack()
+        }
 }

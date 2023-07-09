@@ -51,10 +51,8 @@ class ResultScreenArgs(savedStateHandle: SavedStateHandle) {
 }
 
 fun NavController.toResultScreen(score: Int, categoryGame: String, difficultiesType: String) {
-    try{
-        navigate("${ROUTE}/${score}/${categoryGame}/${difficultiesType}")
-    }catch (e: Exception){
-        Log.e("TAGTAG", "toResultScreen: $e", )
-    }
+        navigate("${ROUTE}/${score}/${categoryGame}/${difficultiesType}"){
+            popBackStack()
+        }
 }
 

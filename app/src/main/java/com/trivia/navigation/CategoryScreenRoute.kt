@@ -19,5 +19,7 @@ fun NavGraphBuilder.CategoryScreenRoute(navController: NavController){
 }
 
 fun NavController.toCategory(){
-    navigate(ROUTE)
+    navigate(ROUTE){
+        popBackStack()
+    }
 }
