@@ -1,12 +1,13 @@
 package com.trivia.viewmodel.difficulty
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import com.trivia.navigation.DifficultyScreenArgs
 import com.trivia.repository.TriviaRepository
+import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.DifficultiesType
 import com.trivia.ui.bases.BaseViewModel
 import com.trivia.ui.bases.ButtonUIState
+import com.trivia.viewmodel.state.Category
 import com.trivia.viewmodel.state.Difficulty
 import com.trivia.viewmodel.state.DifficultyUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,14 +41,21 @@ class DifficultyViewModel @Inject constructor(
                 else ButtonUIState.StartState
             )
         }
+        updateState(selectedDifficulty,isNotSameDifficulty,updatedCategories)
+    }
+
+    private fun updateState(
+        selectedDifficulty: DifficultiesType,
+        isVisible: Boolean,
+        difficulties: List<Difficulty>
+    ) {
         _state.update {
             it.copy(
                 selectedDifficulty = selectedDifficulty,
-                isButtonNextVisible = isNotSameDifficulty,
-                difficulties = updatedCategories
+                isButtonNextVisible = isVisible,
+                difficulties = difficulties
             )
         }
-        Log.i( "onSelectCategory: ", _state.value.selectedDifficulty.toString())
     }
 
 }

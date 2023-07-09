@@ -35,14 +35,21 @@ class CategoryViewModel @Inject constructor(
                 else ButtonUIState.StartState
             )
         }
+        updateState(selectedCategory,isNotSameCategory,updatedCategories)
+    }
+
+    private fun updateState(
+        selectedCategory: CategoriesType,
+        isVisible: Boolean,
+        categories: List<Category>
+    ) {
         _state.update {
             it.copy(
                 selectedCategory = selectedCategory,
-                isButtonNextVisible = isNotSameCategory,
-                categories = updatedCategories
+                isButtonNextVisible = isVisible,
+                categories = categories
             )
         }
-        Log.i( "onSelectCategory: ", _state.value.selectedCategory.toString())
     }
 
 }
