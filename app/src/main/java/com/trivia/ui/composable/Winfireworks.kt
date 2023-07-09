@@ -46,11 +46,11 @@ fun Winfireworks(
     val transition = rememberInfiniteTransition()
 
     val scaleImage by  transition.animateFloat(
-        targetValue = if (isVisiable) .8f else 0f,
+        targetValue = if (isVisiable) 1f else 0f,
         initialValue = 0f,
         animationSpec = infiniteRepeatable(
             animation = tween(
-                durationMillis = 4000,
+                durationMillis = 1000,
                 easing = LinearEasing,
             ),
             repeatMode = RepeatMode.Restart,
