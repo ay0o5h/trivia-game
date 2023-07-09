@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.trivia.navigation.DifficultyScreenArgs.Companion.CATEGORY
 import com.trivia.repository.model.CategoriesType
-import com.trivia.ui.screens.DifficultyScreen
+import com.trivia.ui.screens.difficulty.DifficultyScreen
 
 
 

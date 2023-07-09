@@ -1,6 +1,5 @@
 package com.trivia.navigation
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -10,7 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.DifficultiesType
-import com.trivia.ui.screens.ResultScreen
+import com.trivia.ui.screens.result.ResultScreen
 
 
 private const val ROUTE = "Result"

@@ -1,4 +1,4 @@
-package com.trivia.viewmodel
+package com.trivia.viewmodel.difficulty
 
 import com.trivia.viewmodel.state.Difficulty
 

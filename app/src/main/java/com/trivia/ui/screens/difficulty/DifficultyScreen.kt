@@ -1,4 +1,4 @@
-package com.trivia.ui.screens
+package com.trivia.ui.screens.difficulty
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,14 +24,13 @@ import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
-import com.trivia.ui.theme.Typography
-import com.trivia.ui.theme.White_87
+import com.trivia.ui.composable.SpacerVertical12
+import com.trivia.ui.composable.TextHeader
+import com.trivia.ui.screens.difficulty.composable.DifficultyChoices
 import com.trivia.ui.theme.space_12
-import com.trivia.ui.theme.space_16
-import com.trivia.ui.theme.space_202
 import com.trivia.ui.theme.space_48
-import com.trivia.viewmodel.DifficultyScreenInteractions
-import com.trivia.viewmodel.DifficultyViewModel
+import com.trivia.viewmodel.difficulty.DifficultyScreenInteractions
+import com.trivia.viewmodel.difficulty.DifficultyViewModel
 import com.trivia.viewmodel.state.DifficultyUIState
 
 @Composable
@@ -71,29 +69,13 @@ fun DifficultyContent(
         Column(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                modifier = Modifier.padding(end = space_16, start = space_16, top = space_202),
-                text = stringResource(R.string.choose_your_game_level),
-                style = Typography.titleLarge,
-                color = White_87
-            )
 
-            LazyColumn(
-                modifier = Modifier.padding(top = space_12),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+            TextHeader(stringResource(R.string.choose_your_game_level))
 
-                ) {
-                items(state.difficulties) {
-                    OutlineButton(
-                        text = it.title,
-                        modifier = Modifier.padding(top = space_12),
-                        buttonUIState = it.buttonUIState
-                    ) {
-                        viewModel.onSelectDifficulty(it)
-                    }
-                }
-            }
+            SpacerVertical12()
+
+            DifficultyChoices(state, viewModel)
+
             FillButton(
                 state.isButtonNextVisible,
                 modifier = Modifier.padding(top = space_48),

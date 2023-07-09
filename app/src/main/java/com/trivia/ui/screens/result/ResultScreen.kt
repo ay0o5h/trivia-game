@@ -1,4 +1,4 @@
-package com.trivia.ui.screens
+package com.trivia.ui.screens.result
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,7 +30,7 @@ import com.trivia.ui.composable.SpacerVertical32
 import com.trivia.ui.composable.TextStyles
 import com.trivia.ui.composable.Winfireworks
 import com.trivia.ui.theme.space_20
-import com.trivia.viewmodel.ResultViewModel
+import com.trivia.viewmodel.result.ResultViewModel
 import com.trivia.viewmodel.state.ResultUIState
 
 @Composable

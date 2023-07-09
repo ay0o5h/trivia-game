@@ -1,4 +1,4 @@
-package com.trivia.viewmodel
+package com.trivia.viewmodel.result
 
 import androidx.lifecycle.SavedStateHandle
 import com.trivia.navigation.ResultScreenArgs

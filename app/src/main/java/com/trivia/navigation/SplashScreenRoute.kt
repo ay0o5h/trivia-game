@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 
 import androidx.navigation.compose.composable
-import com.trivia.ui.screens.SplashScreen
+import com.trivia.ui.screens.splash.SplashScreen
 
 
 private const  val  ROUTE ="splash"

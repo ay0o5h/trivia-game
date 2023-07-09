@@ -1,4 +1,4 @@
-package com.trivia.viewmodel
+package com.trivia.viewmodel.category
 
 import android.util.Log
 import com.trivia.repository.TriviaRepository
