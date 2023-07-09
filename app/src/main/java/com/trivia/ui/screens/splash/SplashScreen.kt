@@ -8,6 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -32,7 +33,7 @@ fun SplashContent() {
     MainScaffold {
         Image(
             painter = painterResource(id = R.drawable.logo),
-            contentDescription = ""
+            contentDescription = stringResource(R.string.logo)
         )
     }
 }
