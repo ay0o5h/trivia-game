@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.questions
+package com.trivia.ui.screens.questions
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

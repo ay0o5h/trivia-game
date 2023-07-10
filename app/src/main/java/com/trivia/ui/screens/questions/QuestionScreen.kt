@@ -1,12 +1,11 @@
 package com.trivia.ui.screens.questions
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -17,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -26,8 +26,7 @@ import androidx.navigation.NavController
 import com.trivia.R
 import com.trivia.navigation.toResultScreen
 import com.trivia.ui.composable.FillButton
-import com.trivia.ui.composable.ImageBackground
-import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
+import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.screens.questions.composables.AnimatedTimerProgress
 import com.trivia.ui.screens.questions.composables.Choices
 import com.trivia.ui.screens.questions.composables.QuestionNumber
@@ -37,9 +36,6 @@ import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_24
 import com.trivia.ui.theme.space_8
-import com.trivia.viewmodel.questions.QuestionsInteractionsListener
-import com.trivia.viewmodel.questions.QuestionsUiState
-import com.trivia.viewmodel.questions.QuestionsViewModel
 
 @Composable
 fun QuestionsScreen(
@@ -63,15 +59,21 @@ fun QuestionsScreen(
 fun QuestionsScreenContent(
     state: QuestionsUiState,
     listener: QuestionsInteractionsListener,
+    modifier: Modifier = Modifier
 ) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        ImageBackground()
-        ScreenWithHeaderAndFooterImages(header = painterResource(id = R.drawable.group_astrounat))
+    MainScaffold(
+        modifier = modifier,
+        header = {
+            Image(
+                painter = painterResource(id = R.drawable.group_astrounat),
+                contentDescription = stringResource(R.string.space),
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillBounds
+            )
+        }
+    ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.Center)
-                .scrollable(rememberScrollState(), Orientation.Vertical),
+            modifier = Modifier.fillMaxWidth().scrollable(rememberScrollState(), Orientation.Vertical),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(modifier = Modifier.weight(1f))
@@ -113,7 +115,6 @@ fun QuestionsScreenContent(
                     .padding(bottom = space_24)
             )
         }
-
     }
 }
 

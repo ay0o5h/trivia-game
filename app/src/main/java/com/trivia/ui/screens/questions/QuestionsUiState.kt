@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.questions
+package com.trivia.ui.screens.questions
 
 import com.trivia.ui.bases.ButtonUIState
 

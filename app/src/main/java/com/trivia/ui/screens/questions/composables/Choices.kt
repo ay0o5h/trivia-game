@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.viewmodel.questions.QuestionsInteractionsListener
-import com.trivia.viewmodel.questions.QuestionsUiState
+import com.trivia.ui.screens.questions.QuestionsInteractionsListener
+import com.trivia.ui.screens.questions.QuestionsUiState
 
 
 @Composable
