@@ -8,12 +8,12 @@ import com.trivia.ui.screens.category.CategoryScreen
 
 private const  val  ROUTE ="category"
 
-fun NavGraphBuilder.categoryScreenRoute(navController: NavController){
+fun NavGraphBuilder.categoryScreenRoute(){
     composable(
         route= ROUTE,
     )
     {
-        CategoryScreen(navController as NavHostController)
+        CategoryScreen()
     }
 }
 

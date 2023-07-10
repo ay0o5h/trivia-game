@@ -9,14 +9,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
+import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toCategory
 import com.trivia.ui.composable.MainScaffold
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(
-    navController: NavHostController,
-) {
+fun SplashScreen() {
+  val navController=  LocalNavController.current
     LaunchedEffect(Unit) {
         delay(1000)
         navController.toCategory()
@@ -36,5 +36,5 @@ fun SplashContent() {
 @Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview() {
-    SplashScreen(rememberNavController())
+    SplashScreen()
 }

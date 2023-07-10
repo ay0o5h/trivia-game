@@ -15,7 +15,7 @@ import com.trivia.ui.screens.questions.QuestionsScreen
 
 private const val ROUTE = "QuestionsScreen"
 
-fun NavGraphBuilder.questionsScreenRoute(navController: NavController) {
+fun NavGraphBuilder.questionsScreenRoute() {
     composable(
         route = "$ROUTE/{$CATEGORY}/{$DIFFICULTY}",
         arguments = listOf(
@@ -27,7 +27,7 @@ fun NavGraphBuilder.questionsScreenRoute(navController: NavController) {
             },
         )
     ) {
-        QuestionsScreen(navController)
+        QuestionsScreen()
     }
 }
 

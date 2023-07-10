@@ -22,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
+import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toCategory
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.bases.ButtonUIState
@@ -37,10 +38,10 @@ import com.trivia.ui.theme.space_20
 
 @Composable
 fun ResultScreen(
-    navController: NavHostController,
     viewModel: ResultViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
+    val navController=  LocalNavController.current
     ResultContent(
         state = state,
         onGoMainScreen = { navController.toCategory() },
@@ -119,5 +120,5 @@ fun ResultContent(
 @Preview(showBackground = true)
 @Composable
 fun ResultScreenPreview() {
-    ResultScreen(rememberNavController())
+    ResultScreen()
 }

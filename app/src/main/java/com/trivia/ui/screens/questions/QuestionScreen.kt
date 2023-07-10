@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.trivia.R
+import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toResultScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.MainScaffold
@@ -40,10 +41,10 @@ import com.trivia.ui.theme.space_8
 
 @Composable
 fun QuestionsScreen(
-    navController: NavController,
     viewModel: QuestionsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
+    val navController=  LocalNavController.current
     QuestionsScreenContent(state = state, listener = viewModel)
     LaunchedEffect(key1 = state.shouldNavigate) {
         if (state.shouldNavigate) {

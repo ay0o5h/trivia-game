@@ -11,12 +11,12 @@ import com.trivia.ui.screens.splash.SplashScreen
 
 private const  val  ROUTE ="splash"
 
-fun NavGraphBuilder.splashScreenRoute(navController: NavController){
+fun NavGraphBuilder.splashScreenRoute(){
     composable(
        route= ROUTE,
     )
     {
-        SplashScreen(navController as NavHostController)
+        SplashScreen()
     }
 }
 

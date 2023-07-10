@@ -15,7 +15,7 @@ import com.trivia.ui.screens.result.ResultScreen
 private const val ROUTE = "Result"
 
 
-fun NavGraphBuilder.resultScreenRoute(navController: NavController) {
+fun NavGraphBuilder.resultScreenRoute() {
 
     composable(
         route = "${ROUTE}/" +
@@ -31,7 +31,7 @@ fun NavGraphBuilder.resultScreenRoute(navController: NavController) {
             },)
     )
     {
-        ResultScreen(navController as NavHostController)
+        ResultScreen()
     }
 }
 

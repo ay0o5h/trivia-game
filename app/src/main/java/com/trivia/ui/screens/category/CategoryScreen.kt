@@ -19,6 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.trivia.R
+import com.trivia.navigation.LocalNavController
+
 import com.trivia.navigation.navigateToDifficultyScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.MainScaffold
@@ -33,9 +35,10 @@ import com.trivia.ui.theme.space_48
 
 @Composable
 fun CategoryScreen(
-    navController: NavHostController, viewModel: CategoryViewModel = hiltViewModel()
+    viewModel: CategoryViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val navController=  LocalNavController.current
     fun navigateToDifficultyScreen() {
         navController.navigateToDifficultyScreen(state.selectedCategory)
     }
@@ -105,5 +108,5 @@ fun CategoryContent(
 @Preview
 @Composable
 fun CategoryScreenPreview() {
-    CategoryScreen(rememberNavController())
+    CategoryScreen()
 }
