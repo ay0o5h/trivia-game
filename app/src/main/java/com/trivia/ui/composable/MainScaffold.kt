@@ -18,35 +18,36 @@ import com.trivia.ui.theme.radius_80
 fun MainScaffold(
     modifier: Modifier = Modifier,
     header: (@Composable () -> Unit)? = null,
+    footer: (@Composable () -> Unit)? = null,
     content: @Composable () -> Unit,
-    footer: (@Composable () ->Unit)? = null
-){
-  Box (
-      modifier = modifier.fillMaxSize(),
-      contentAlignment = Alignment.Center
-  ){
-      Image(
-          modifier = modifier
-              .fillMaxSize()
-              .blur(radius = radius_80.dp),
-          painter = painterResource(id = R.drawable.background),
-          contentDescription = "",
-          contentScale = ContentScale.FillBounds
-      )
-      header?.let {
-          Box(modifier = Modifier.align(Alignment.TopCenter)){
-              it()
-          }
-      }
+) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            modifier = modifier
+                .fillMaxSize()
+                .blur(radius = radius_80.dp),
+            painter = painterResource(id = R.drawable.background),
+            contentDescription = "",
+            contentScale = ContentScale.FillBounds
+        )
 
-      content()
+        header?.let {
+            Box(modifier = Modifier.align(Alignment.TopCenter)) {
+                it()
+            }
+        }
 
-      footer?.let {
-          Box(modifier = Modifier.align(Alignment.BottomCenter)){
-              it()
-          }
-      }
+        content()
 
-  }
+        footer?.let {
+            Box(modifier = Modifier.align(Alignment.BottomCenter)) {
+                it()
+            }
+        }
+
+    }
 }
 
