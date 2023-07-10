@@ -1,4 +1,4 @@
-package com.trivia.viewmodel.questions
+package com.trivia.ui.screens.questions
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -30,13 +30,14 @@ class QuestionsViewModel @Inject constructor(
     private fun getAllQuestions() {
         viewModelScope.launch(Dispatchers.IO) {
             kotlin.runCatching {
+                _state.update { it.copy(isLoading = true) }
                 val questionsUiState: List<QuestionsUiState.QuestionUiState> =
                     triviaRepository.getQuestions(args.category, args.difficulty)
                         .toQuestionsUiState()
-                _state.update { it.copy(questions = questionsUiState) }
+                _state.update { it.copy(questions = questionsUiState, isLoading = false, isError = false) }
                 startTimer()
             }.onFailure {
-                // todo: handle error state
+                _state.update { it.copy(isError = true, isLoading = false) }
             }
         }
     }
