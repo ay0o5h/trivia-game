@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -72,48 +73,52 @@ fun QuestionsScreenContent(
             )
         }
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth().scrollable(rememberScrollState(), Orientation.Vertical),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Spacer(modifier = Modifier.weight(1f))
+        if (state.isLoading){
+            CircularProgressIndicator()
+        }else{
             Column(
-                verticalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth().scrollable(rememberScrollState(), Orientation.Vertical),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                Spacer(modifier = Modifier.weight(1f))
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(space_8),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    QuestionNumber(state.currentQuestionNumber, state.totalQuestion)
-                    AnimatedTimerProgress(
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = space_16, vertical = space_8),
-                        currentTime = state.currentTime,
-                        maxTime = state.maxTime
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(space_8),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        QuestionNumber(state.currentQuestionNumber, state.totalQuestion)
+                        AnimatedTimerProgress(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = space_16, vertical = space_8),
+                            currentTime = state.currentTime,
+                            maxTime = state.maxTime
+                        )
+                    }
+
+                    Text(
+                        text = state.currentQuestion.question,
+                        style = Typography.titleLarge,
+                        color = White_87,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
                     )
+
+                    Choices(state, listener)
                 }
-
-                Text(
-                    text = state.currentQuestion.question,
-                    style = Typography.titleLarge,
-                    color = White_87,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
+                Spacer(modifier = Modifier.weight(1f))
+                FillButton(
+                    isVisible = state.hasSubmitButton,
+                    text = stringResource(id = R.string.submit),
+                    onClick = { listener.onClickSubmit() },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = space_16)
+                        .padding(bottom = space_24)
                 )
-
-                Choices(state, listener)
             }
-            Spacer(modifier = Modifier.weight(1f))
-            FillButton(
-                isVisible = state.hasSubmitButton,
-                text = stringResource(id = R.string.submit),
-                onClick = { listener.onClickSubmit() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = space_16)
-                    .padding(bottom = space_24)
-            )
         }
     }
 }

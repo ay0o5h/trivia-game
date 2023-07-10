@@ -17,7 +17,7 @@ import com.trivia.ui.theme.radius_80
 @Composable
 fun MainScaffold(
     modifier: Modifier = Modifier,
-    header : (@Composable () -> Unit)? = null,
+    header: (@Composable () -> Unit)? = null,
     content: @Composable () -> Unit
 ){
   Box (
@@ -32,7 +32,11 @@ fun MainScaffold(
           contentDescription = "",
           contentScale = ContentScale.FillBounds
       )
-      header?.invoke()
+      header?.let {
+          Box(modifier = Modifier.align(Alignment.TopCenter)){
+              it()
+          }
+      }
       content()
   }
 }

@@ -13,6 +13,8 @@ data class QuestionsUiState(
     val selectedAnswer: String? = null,
     val selectedAnswerState: ButtonUIState? = null,
     val showCorrect: Boolean = false,
+    val isLoading: Boolean = true,
+    val isError: Boolean = false,
 ) {
     data class QuestionUiState(
         val question: String = "",
