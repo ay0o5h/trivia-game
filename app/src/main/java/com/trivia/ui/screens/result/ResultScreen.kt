@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,8 +20,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toCategory
@@ -31,12 +28,13 @@ import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.GlowCircle
 import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.ui.composable.TextStyles
-import com.trivia.ui.composable.Winfireworks
+import com.trivia.ui.screens.result.composables.Winfireworks
 import com.trivia.ui.theme.space_12
 import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_20
 import com.trivia.ui.theme.space_32
+import com.trivia.ui.theme.Typography
+
 
 @Composable
 fun ResultScreen(
@@ -88,7 +86,7 @@ fun ResultContent(
 
                     Text(
                         text = stringResource(R.string.game_over),
-                        style = MaterialTheme.typography.titleLarge.merge(TextStyles.LargeTextStyle()),
+                        style = Typography.bodyMedium,
                     )
                     Spacer(modifier = Modifier.height(space_12))
                     GlowCircle(result = state.score)
@@ -98,7 +96,7 @@ fun ResultContent(
                             true -> stringResource(R.string.congratulations_you_won_the_game_enjoy_your_victory_and_celebrate_it)
                             false -> stringResource(R.string.good_luck_try_again_and_you_will_succeed_next_time)
                         },
-                        style = MaterialTheme.typography.titleMedium.merge(TextStyles.MeduimTextStyle()),
+                        style = Typography.titleSmall
                     )
                     OutlineButton(
                         text = stringResource(R.string.try_again),

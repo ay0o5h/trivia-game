@@ -1,4 +1,4 @@
-package com.trivia.ui.composable
+package com.trivia.ui.screens.result.composables
 
 import android.annotation.SuppressLint
 import android.util.Log

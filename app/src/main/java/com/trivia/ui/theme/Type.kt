@@ -1,10 +1,12 @@
 package com.trivia.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.trivia.R
 
@@ -30,6 +32,20 @@ val Typography = Typography(
         fontSize = fontSize_20,
         lineHeight = fontSize_24,
         letterSpacing = 0.5.sp
+    ),
+
+    bodyMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.poppins_regular)),
+        fontSize = fontSize_24,
+            fontWeight = FontWeight.W500,
+            color = Color.White,
+            textAlign = TextAlign.Center
+    ),
+    titleSmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.poppins_regular)),
+        fontSize = fontSize_14,
+        color = White_70,
+        textAlign = TextAlign.Center
     ),
 
     /* Other default text styles to override
