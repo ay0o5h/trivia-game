@@ -43,7 +43,7 @@ fun GlowCircle(
                 .border(
                     BorderStroke(
                         4.dp,
-                        brush = Brush.verticalGradient(listOf(Purple, White_36))
+                        color = Purple
                     ), shape = CircleShape
                 )
         )

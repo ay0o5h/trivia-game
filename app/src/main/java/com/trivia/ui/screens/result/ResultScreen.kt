@@ -4,8 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,12 +31,12 @@ import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.GlowCircle
 import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.ui.composable.SpacerVertical12
-import com.trivia.ui.composable.SpacerVertical20
-import com.trivia.ui.composable.SpacerVertical32
 import com.trivia.ui.composable.TextStyles
 import com.trivia.ui.composable.Winfireworks
+import com.trivia.ui.theme.space_12
+import com.trivia.ui.theme.space_16
 import com.trivia.ui.theme.space_20
+import com.trivia.ui.theme.space_32
 
 @Composable
 fun ResultScreen(
@@ -88,24 +90,22 @@ fun ResultContent(
                         text = stringResource(R.string.game_over),
                         style = MaterialTheme.typography.titleLarge.merge(TextStyles.LargeTextStyle()),
                     )
-                    SpacerVertical12()
+                    Spacer(modifier = Modifier.height(space_12))
                     GlowCircle(result = state.score)
-                    SpacerVertical20()
                     Text(
-                        modifier = Modifier.padding(horizontal = space_20),
+                        modifier = Modifier.padding(start = space_16,end =space_16,bottom = space_32,top=space_20),
                         text = when (state.isWinner) {
                             true -> stringResource(R.string.congratulations_you_won_the_game_enjoy_your_victory_and_celebrate_it)
                             false -> stringResource(R.string.good_luck_try_again_and_you_will_succeed_next_time)
                         },
                         style = MaterialTheme.typography.titleMedium.merge(TextStyles.MeduimTextStyle()),
                     )
-                    SpacerVertical32()
                     OutlineButton(
                         text = stringResource(R.string.try_again),
                         buttonUIState = ButtonUIState.ClickedState,
                         onClick = { onTryAgain() }
                     )
-                    SpacerVertical12()
+                    Spacer(modifier = Modifier.height(space_12))
                     OutlineButton(
                         text = stringResource(R.string.main_menu),
                         onClick = { onGoMainScreen() }

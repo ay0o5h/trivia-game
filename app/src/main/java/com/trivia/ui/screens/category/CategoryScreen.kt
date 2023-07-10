@@ -75,22 +75,21 @@ fun CategoryContent(
         ) {
             
             Text(
-                modifier = Modifier.padding(end = space_16, start = space_16, top = space_202),
+                modifier = Modifier.padding(end = space_16, start = space_16, top = space_202, bottom = space_12),
                 text = (stringResource(R.string.choose_the_game_category)),
                 style = Typography.titleLarge,
                 color = White_87
             )
 
-            SpacerVertical12()
-
             state.categories.forEach{
                 OutlineButton(
                     text = it.title,
                     modifier = Modifier.padding(top = space_12),
-                    buttonUIState = it.buttonUIState
-                ) {
-                    listener.onSelectCategory(it)
-                }
+                    buttonUIState = it.buttonUIState,
+                    onClick = {
+                        listener.onSelectCategory(it)
+                    }
+                )
             }
 
             FillButton(

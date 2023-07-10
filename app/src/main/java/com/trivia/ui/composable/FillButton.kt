@@ -31,10 +31,10 @@ import com.trivia.ui.theme.space_56
 @Composable
 fun FillButton(
     isVisible: Boolean,
-    modifier: Modifier = Modifier,
-    text: String,
     onClick: () -> Unit,
-) {
+    text: String,
+    modifier: Modifier = Modifier,
+    ) {
     val gradient = Brush.linearGradient(
         colors = listOf(White36, PurpleDark),
         start = Offset(x = -20f, y = 150f),

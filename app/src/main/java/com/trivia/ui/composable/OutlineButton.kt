@@ -32,10 +32,10 @@ import com.trivia.ui.theme.space_2
 fun OutlineButton(
     text: String,
     fraction: Float = 9f,
-    buttonUIState: ButtonUIState = ButtonUIState.StartState,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-) {
+    buttonUIState: ButtonUIState = ButtonUIState.StartState,
+    ) {
 
     val buttonColor by animateColorAsState(
         targetValue = when (buttonUIState) {

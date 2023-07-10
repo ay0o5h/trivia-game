@@ -17,15 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.composable.FillButton
 import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
@@ -78,38 +75,33 @@ fun DifficultyContent(
                 contentScale = ContentScale.FillBounds
             )
         }
-    ) {
+    )
+    {
 
         Box(
             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
         ) {
-            ScreenWithHeaderAndFooterImages(
-                header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
-                    id = R.drawable.group_space
-                )
-            )
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Text(
-                    modifier = Modifier.padding(end = space_16, start = space_16, top = space_202),
+                    modifier = Modifier.padding(end = space_16, start = space_16,
+                        top = space_202, bottom = space_12),
                     text = (stringResource(R.string.choose_your_game_level)),
                     style = Typography.titleLarge,
                     color = White_87
                 )
-
-                SpacerVertical12()
-
                 state.difficulties.forEach {
                     OutlineButton(
                         text = it.title,
                         modifier = Modifier.padding(top = space_12),
-                        buttonUIState = it.buttonUIState
-                    ) {
-                        listener.onSelectDifficulty(it)
-                    }
+                        buttonUIState = it.buttonUIState,
+                        onClick = {
+                            listener.onSelectDifficulty(it)
+                        }
+                    )
                 }
 
                 FillButton(
