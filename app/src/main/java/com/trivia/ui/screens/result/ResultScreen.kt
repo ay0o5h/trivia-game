@@ -21,7 +21,7 @@ import com.trivia.R
 import com.trivia.navigation.toCategory
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.bases.ButtonUIState
-import com.trivia.ui.components.GradientCircle
+import com.trivia.ui.composable.GlowCircle
 import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.SpacerVertical12
@@ -71,7 +71,7 @@ fun ResultContent(
                 style = MaterialTheme.typography.titleLarge.merge(TextStyles.LargeTextStyle()),
             )
             SpacerVertical12()
-            GradientCircle( result = state.score)
+            GlowCircle( result = state.score)
             SpacerVertical20()
             Text(
                 modifier=Modifier.padding(horizontal = space_20),
