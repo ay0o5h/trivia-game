@@ -22,7 +22,7 @@ import com.trivia.navigation.toCategory
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.bases.ButtonUIState
 import com.trivia.ui.composable.GlowCircle
-import com.trivia.ui.composable.ImageBackground
+import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.composable.OutlineButton
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.SpacerVertical20
@@ -53,6 +53,12 @@ fun ResultContent(
     onGoMainScreen:()->Unit,
     onTryAgain:()->Unit,
 ){
+
+    MainScaffold(
+        header = {
+
+        }
+    )
 
 
     Box (  modifier = Modifier

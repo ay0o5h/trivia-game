@@ -18,7 +18,6 @@ import androidx.navigation.compose.rememberNavController
 import com.trivia.R
 import com.trivia.navigation.toQuestionsScreen
 import com.trivia.ui.composable.FillButton
-import com.trivia.ui.composable.ImageBackground
 import com.trivia.ui.composable.ScreenWithHeaderAndFooterImages
 import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.composable.TextHeader
@@ -52,7 +51,6 @@ fun DifficultyContent(
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-        ImageBackground()
         ScreenWithHeaderAndFooterImages(
             header = painterResource(id = R.drawable.group_astrounat), footer = painterResource(
                 id = R.drawable.group_space

@@ -71,56 +71,59 @@ fun QuestionsScreenContent(
                 modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.FillBounds
             )
-        }
-    ) {
-        if (state.isLoading){
-            CircularProgressIndicator()
-        }else{
-            Column(
-                modifier = Modifier.fillMaxWidth().scrollable(rememberScrollState(), Orientation.Vertical),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Spacer(modifier = Modifier.weight(1f))
+        },
+        content = {
+            if (state.isLoading) {
+                CircularProgressIndicator()
+            } else {
                 Column(
-                    verticalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(space_8),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        QuestionNumber(state.currentQuestionNumber, state.totalQuestion)
-                        AnimatedTimerProgress(
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = space_16, vertical = space_8),
-                            currentTime = state.currentTime,
-                            maxTime = state.maxTime
-                        )
-                    }
-
-                    Text(
-                        text = state.currentQuestion.question,
-                        style = Typography.titleLarge,
-                        color = White_87,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
-                    )
-
-                    Choices(state, listener)
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                FillButton(
-                    isVisible = state.hasSubmitButton,
-                    text = stringResource(id = R.string.submit),
-                    onClick = { listener.onClickSubmit() },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = space_16)
-                        .padding(bottom = space_24)
-                )
+                        .scrollable(rememberScrollState(), Orientation.Vertical),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Spacer(modifier = Modifier.weight(1f))
+                    Column(
+                        verticalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(space_8),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            QuestionNumber(state.currentQuestionNumber, state.totalQuestion)
+                            AnimatedTimerProgress(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = space_16, vertical = space_8),
+                                currentTime = state.currentTime,
+                                maxTime = state.maxTime
+                            )
+                        }
+
+                        Text(
+                            text = state.currentQuestion.question,
+                            style = Typography.titleLarge,
+                            color = White_87,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
+                        )
+
+                        Choices(state, listener)
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    FillButton(
+                        isVisible = state.hasSubmitButton,
+                        text = stringResource(id = R.string.submit),
+                        onClick = { listener.onClickSubmit() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = space_16)
+                            .padding(bottom = space_24)
+                    )
+                }
             }
         }
-    }
+    )
 }
 
 

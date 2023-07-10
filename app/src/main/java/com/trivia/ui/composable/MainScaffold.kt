@@ -18,7 +18,8 @@ import com.trivia.ui.theme.radius_80
 fun MainScaffold(
     modifier: Modifier = Modifier,
     header: (@Composable () -> Unit)? = null,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    footer: (@Composable () ->Unit)? = null
 ){
   Box (
       modifier = modifier.fillMaxSize(),
@@ -37,7 +38,15 @@ fun MainScaffold(
               it()
           }
       }
+
       content()
+
+      footer?.let {
+          Box(modifier = Modifier.align(Alignment.BottomCenter)){
+              it()
+          }
+      }
+
   }
 }
 
