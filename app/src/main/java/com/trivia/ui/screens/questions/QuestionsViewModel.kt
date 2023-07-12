@@ -129,10 +129,15 @@ private fun List<QuestionInfo>.toQuestionsUiState(): List<QuestionsUiState.Quest
         val correctAnswer = it.correctAnswer ?: ""
         val inCorrectAnswers = it.incorrectAnswers?.filterNotNull() ?: emptyList()
         QuestionsUiState.QuestionUiState(
-            question = it.question?.text ?: "",
+            question = removeHtmlTags(it.question?.text ?: ""),
             correctAnswer = correctAnswer,
             otherAnswers = inCorrectAnswers,
             optionsAfterShuffled = (inCorrectAnswers + correctAnswer).shuffled()
         )
     }
+}
+
+fun removeHtmlTags(input: String): String {
+    val htmlRegex = "<[^>]+>".toRegex()
+    return input.replace(htmlRegex, "")
 }
