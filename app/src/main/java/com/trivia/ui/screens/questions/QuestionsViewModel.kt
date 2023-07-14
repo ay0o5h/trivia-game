@@ -34,7 +34,13 @@ class QuestionsViewModel @Inject constructor(
                 val questionsUiState: List<QuestionsUiState.QuestionUiState> =
                     triviaRepository.getQuestions(args.category, args.difficulty)
                         .toQuestionsUiState()
-                _state.update { it.copy(questions = questionsUiState, isLoading = false, isError = false) }
+                _state.update {
+                    it.copy(
+                        questions = questionsUiState,
+                        isLoading = false,
+                        isError = false
+                    )
+                }
                 startTimer()
             }.onFailure {
                 _state.update { it.copy(isError = true, isLoading = false) }
@@ -64,32 +70,31 @@ class QuestionsViewModel @Inject constructor(
     // endregion
 
     // region interactions
-    private fun changeSelectedAnswer(answer: String) {
-        _state.update { it.copy(selectedAnswer = answer) }
+    private fun changeSelectedAnswer(answer: QuestionsUiState.AnswerButton) {
+        _state.update {
+            it.apply {
+                currentQuestion.selectedAnswerButton = answer
+                currentQuestion.highlightSelectedItem()
+            }
+        }
     }
 
     private fun submit() {
-        if (state.value.hasSubmitButton) {
+        if (state.value.currentQuestion.hasSubmitButton) {
             checkIfCorrectAnswer()
         }
     }
 
     private fun checkIfCorrectAnswer() {
         viewModelScope.launch {
-            if (state.value.isCorrectAnswer) {
+            if (state.value.currentQuestion.isCorrectAnswer) {
                 _state.update {
-                    it.copy(
-                        selectedAnswerState = ButtonUIState.CorrectState,
-                        passedQuestion = it.passedQuestion + 1,
-                        showCorrect = true
-                    )
+                    it.copy(passedQuestion = it.passedQuestion + 1)
+                        .apply { currentQuestion.setSelectedAnswerStateAndShowCorrect(ButtonUIState.CorrectState) }
                 }
             } else {
                 _state.update {
-                    it.copy(
-                        selectedAnswerState = ButtonUIState.ErrorState,
-                        showCorrect = true
-                    )
+                    it.apply { currentQuestion.setSelectedAnswerStateAndShowCorrect(ButtonUIState.ErrorState) }
                 }
             }
             delay(500)
@@ -102,19 +107,14 @@ class QuestionsViewModel @Inject constructor(
             _state.update { it.copy(shouldNavigate = true) }
         } else {
             _state.update {
-                it.copy(
-                    currentQuestionNumber = it.currentQuestionNumber + 1,
-                    selectedAnswer = null,
-                    selectedAnswerState = null,
-                    showCorrect = false
-                )
+                it.copy(currentQuestionNumber = it.currentQuestionNumber + 1)
             }
             timer?.cancel()
             startTimer()
         }
     }
 
-    override fun onClickAnswer(answer: String) {
+    override fun onClickAnswer(answer: QuestionsUiState.AnswerButton) {
         changeSelectedAnswer(answer)
     }
 
@@ -125,19 +125,21 @@ class QuestionsViewModel @Inject constructor(
 }
 
 private fun List<QuestionInfo>.toQuestionsUiState(): List<QuestionsUiState.QuestionUiState> {
-    return map {
-        val correctAnswer = it.correctAnswer ?: ""
-        val inCorrectAnswers = it.incorrectAnswers?.filterNotNull() ?: emptyList()
+    return map { questionInfo ->
+        val correctAnswer = QuestionsUiState.AnswerButton(questionInfo.correctAnswer ?: "")
+        val inCorrectAnswers = questionInfo.incorrectAnswers?.filterNotNull()
+            ?.map { QuestionsUiState.AnswerButton(it) } ?: emptyList()
+
         QuestionsUiState.QuestionUiState(
-            question = removeHtmlTags(it.question?.text ?: ""),
-            correctAnswer = correctAnswer,
-            otherAnswers = inCorrectAnswers,
+            question = removeHtmlTags(questionInfo.question?.text ?: ""),
+            correctAnswerButton = correctAnswer,
+            otherAnswerButtons = inCorrectAnswers,
             optionsAfterShuffled = (inCorrectAnswers + correctAnswer).shuffled()
         )
     }
 }
 
-fun removeHtmlTags(input: String): String {
+private fun removeHtmlTags(input: String): String {
     val htmlRegex = "<[^>]+>".toRegex()
     return input.replace(htmlRegex, "")
 }
