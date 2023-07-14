@@ -1,6 +1,5 @@
 package com.trivia.ui.screens.category
 
-import android.util.Log
 import com.trivia.repository.TriviaRepository
 import com.trivia.repository.model.CategoriesType
 import com.trivia.ui.bases.BaseViewModel
@@ -23,17 +22,17 @@ class CategoryViewModel @Inject constructor(
     }
 
     override fun onSelectCategory(passedCategory: Category) {
-        val isNotSameCategory = passedCategory.type != _state.value.selectedCategory
+        val isDifferentCategorySelected = passedCategory.type != _state.value.selectedCategory
         val selectedCategory =
-            if (isNotSameCategory) passedCategory.type else CategoriesType.UNKNOWN
+            if (isDifferentCategorySelected) passedCategory.type else CategoriesType.UNKNOWN
 
         val updatedCategories = _state.value.categories.map {
             it.copy(
-                buttonUIState = if (it.type == passedCategory.type && isNotSameCategory) ButtonUIState.ClickedState
+                buttonUIState = if (it.type == passedCategory.type && isDifferentCategorySelected) ButtonUIState.ClickedState
                 else ButtonUIState.StartState
             )
         }
-        updateState(selectedCategory,isNotSameCategory,updatedCategories)
+        updateState(selectedCategory,isDifferentCategorySelected,updatedCategories)
     }
 
     private fun updateState(

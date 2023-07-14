@@ -1,6 +1,5 @@
 package com.trivia.ui.screens.difficulty
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import com.trivia.navigation.DifficultyScreenArgs
 import com.trivia.repository.TriviaRepository
@@ -28,24 +27,31 @@ class DifficultyViewModel @Inject constructor(
     }
 
     override fun onSelectDifficulty(passedDifficulty: Difficulty) {
-        val isNotSameDifficulty = passedDifficulty.type != _state.value.selectedDifficulty
+        val isDifferentDifficultySelected = passedDifficulty.type != _state.value.selectedDifficulty
         val selectedDifficulty =
-            if (isNotSameDifficulty) passedDifficulty.type else DifficultiesType.UNKNOWN
+            if (isDifferentDifficultySelected) passedDifficulty.type else DifficultiesType.UNKNOWN
 
-        val updatedCategories = _state.value.difficulties.map {
+        val updatedDifficulty = _state.value.difficulties.map {
             it.copy(
-                buttonUIState = if (it.type == passedDifficulty.type && isNotSameDifficulty) ButtonUIState.ClickedState
+                buttonUIState = if (it.type == passedDifficulty.type && isDifferentDifficultySelected) ButtonUIState.ClickedState
                 else ButtonUIState.StartState
             )
         }
+        updateState(selectedDifficulty,isDifferentDifficultySelected,updatedDifficulty)
+
+    }
+    private fun updateState(
+        selectedDifficulty: DifficultiesType,
+        isVisible: Boolean,
+        difficulty: List<Difficulty>
+    ) {
         _state.update {
             it.copy(
                 selectedDifficulty = selectedDifficulty,
-                isButtonNextVisible = isNotSameDifficulty,
-                difficulties = updatedCategories
+                isButtonNextVisible = isVisible,
+                difficulties = difficulty
             )
         }
-        Log.i( "onSelectCategory: ", _state.value.selectedDifficulty.toString())
     }
 
 }

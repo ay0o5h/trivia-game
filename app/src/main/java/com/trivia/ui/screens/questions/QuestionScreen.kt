@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import com.trivia.R
 import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toResultScreen
-import com.trivia.ui.composable.FillButton
+import com.trivia.ui.composable.ButtonFilled
 import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.screens.questions.composables.AnimatedTimerProgress
 import com.trivia.ui.screens.questions.composables.Choices
@@ -84,9 +84,6 @@ fun QuestionsScreenContent(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
-                    Column(
-                        verticalArrangement = Arrangement.SpaceBetween
-                    ) {
                         Column(
                             verticalArrangement = Arrangement.spacedBy(space_8),
                             horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,9 +107,8 @@ fun QuestionsScreenContent(
                         )
 
                         Choices(state, listener)
-                    }
                     Spacer(modifier = Modifier.weight(1f))
-                    FillButton(
+                    ButtonFilled(
                         isVisible = state.hasSubmitButton,
                         text = stringResource(id = R.string.submit),
                         onClick = { listener.onClickSubmit() },

@@ -17,7 +17,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White36
@@ -29,7 +28,7 @@ import com.trivia.ui.theme.space_56
 
 
 @Composable
-fun FillButton(
+fun ButtonFilled(
     isVisible: Boolean,
     onClick: () -> Unit,
     text: String,
@@ -71,5 +70,5 @@ fun FillButton(
 @Preview
 @Composable
 fun ButtonContinuePreview() {
-    FillButton(true, text = "", onClick = {})
+    ButtonFilled(true, text = "", onClick = {})
 }

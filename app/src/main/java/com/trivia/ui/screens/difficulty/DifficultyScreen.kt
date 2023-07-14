@@ -20,10 +20,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.trivia.R
 import com.trivia.navigation.LocalNavController
 import com.trivia.navigation.toQuestionsScreen
-import com.trivia.ui.composable.FillButton
+import com.trivia.ui.composable.ButtonFilled
 import com.trivia.ui.composable.MainScaffold
 import com.trivia.ui.composable.OutlineButton
-import com.trivia.ui.composable.SpacerVertical12
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White_87
 import com.trivia.ui.theme.space_12
@@ -104,7 +103,7 @@ fun DifficultyContent(
                     )
                 }
 
-                FillButton(
+                ButtonFilled(
                     state.isButtonNextVisible,
                     modifier = Modifier.padding(top = space_48),
                     text = stringResource(R.string.let_s_go),

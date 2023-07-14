@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
 private const val START_DESTINATION ="splash"
-val LocalNavController = compositionLocalOf<NavHostController> { error("No active user found!") }
+val LocalNavController = compositionLocalOf<NavHostController> { error("NO CONTROLLER EXIST") }
 
 @Composable
 fun TriviaNavGraph(
