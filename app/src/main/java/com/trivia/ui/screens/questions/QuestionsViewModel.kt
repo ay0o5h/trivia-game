@@ -122,6 +122,11 @@ class QuestionsViewModel @Inject constructor(
         submit()
     }
     // endregion
+
+    override fun onCleared() {
+        super.onCleared()
+        triviaRepository.clearCashedQuestions()
+    }
 }
 
 private fun QuestionInfo.toQuestionUiState(): QuestionUiState {

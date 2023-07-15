@@ -29,6 +29,10 @@ class TriviaRepositoryImpl @Inject constructor(
         return questionsDataSource.getCurrentQuestion()!!
     }
 
+    override fun clearCashedQuestions() {
+        questionsDataSource.clear()
+    }
+
     private suspend fun getQuestions(category: CategoriesType, difficultiesType: DifficultiesType): List<QuestionInfo> {
         return wrapBaseResponse { apiService.getQuestions(categoriesType = category, difficultiesType = difficultiesType) }
     }

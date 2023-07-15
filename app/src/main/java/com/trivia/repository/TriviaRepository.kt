@@ -10,6 +10,8 @@ interface TriviaRepository {
 
     suspend fun getCurrentQuestion(category: CategoriesType, difficultiesType: DifficultiesType): QuestionInfo
 
+    fun clearCashedQuestions()
+
     fun getCategories(): List<Category>
 
     fun getDifficulty(): List<Difficulty>

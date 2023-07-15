@@ -15,4 +15,8 @@ class QuestionsDataSourceImpl @Inject constructor() : QuestionsDataSource {
     override fun getCurrentQuestion(): QuestionInfo? {
        return questionsQueue.poll()
     }
+
+    override fun clear() {
+        questionsQueue.clear()
+    }
 }
