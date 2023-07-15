@@ -24,19 +24,19 @@ class QuestionsViewModel @Inject constructor(
 
     // region get all questions
     init {
-        getAllQuestions()
+        getData()
     }
 
-    private fun getAllQuestions() {
+    private fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             kotlin.runCatching {
                 _state.update { it.copy(isLoading = true) }
-                val questionsUiState: List<QuestionsUiState.QuestionUiState> =
-                    triviaRepository.getQuestions(args.category, args.difficulty)
-                        .toQuestionsUiState()
+                val questionUiState: QuestionUiState =
+                    triviaRepository.getCurrentQuestion(args.category, args.difficulty)
+                        .toQuestionUiState()
                 _state.update {
                     it.copy(
-                        questions = questionsUiState,
+                        currentQuestion = questionUiState,
                         isLoading = false,
                         isError = false
                     )
@@ -110,7 +110,7 @@ class QuestionsViewModel @Inject constructor(
                 it.copy(currentQuestionNumber = it.currentQuestionNumber + 1)
             }
             timer?.cancel()
-            startTimer()
+            getData()
         }
     }
 
@@ -124,19 +124,17 @@ class QuestionsViewModel @Inject constructor(
     // endregion
 }
 
-private fun List<QuestionInfo>.toQuestionsUiState(): List<QuestionsUiState.QuestionUiState> {
-    return map { questionInfo ->
-        val correctAnswer = QuestionsUiState.AnswerButton(questionInfo.correctAnswer ?: "")
-        val inCorrectAnswers = questionInfo.incorrectAnswers?.filterNotNull()
-            ?.map { QuestionsUiState.AnswerButton(it) } ?: emptyList()
+private fun QuestionInfo.toQuestionUiState(): QuestionUiState {
+    val correctAnswer = QuestionsUiState.AnswerButton(correctAnswer ?: "")
+    val inCorrectAnswers = incorrectAnswers?.filterNotNull()
+        ?.map { QuestionsUiState.AnswerButton(it) } ?: emptyList()
 
-        QuestionsUiState.QuestionUiState(
-            question = removeHtmlTags(questionInfo.question?.text ?: ""),
-            correctAnswerButton = correctAnswer,
-            otherAnswerButtons = inCorrectAnswers,
-            optionsAfterShuffled = (inCorrectAnswers + correctAnswer).shuffled()
-        )
-    }
+    return QuestionUiState(
+        question = removeHtmlTags(question?.text ?: ""),
+        correctAnswerButton = correctAnswer,
+        otherAnswerButtons = inCorrectAnswers,
+        optionsAfterShuffled = (inCorrectAnswers + correctAnswer).shuffled()
+    )
 }
 
 private fun removeHtmlTags(input: String): String {
