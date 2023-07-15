@@ -52,8 +52,8 @@ class QuestionsViewModel @Inject constructor(
     // region timer
     private var timer: Job? = null
     private fun startTimer() {
+        timer?.cancel()
         timer = viewModelScope.launch {
-            timer = null
             _state.update { it.copy(currentTime = 0) }
             while (state.value.currentTime < state.value.maxTime) {
                 _state.update { it.copy(currentTime = it.currentTime + 1) }
@@ -65,6 +65,7 @@ class QuestionsViewModel @Inject constructor(
 
     private fun timeOut() {
         timer?.cancel()
+        timer = null
         nextQuestionOrNavigate()
     }
     // endregion
@@ -109,7 +110,6 @@ class QuestionsViewModel @Inject constructor(
             _state.update {
                 it.copy(currentQuestionNumber = it.currentQuestionNumber + 1)
             }
-            timer?.cancel()
             getData()
         }
     }
