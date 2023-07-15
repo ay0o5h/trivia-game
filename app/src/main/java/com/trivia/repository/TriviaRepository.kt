@@ -8,7 +8,9 @@ import com.trivia.ui.screens.difficulty.Difficulty
 
 interface TriviaRepository {
 
-    suspend fun getQuestions(category: CategoriesType, difficultiesType: DifficultiesType): List<QuestionInfo>
+    suspend fun getCurrentQuestion(category: CategoriesType, difficultiesType: DifficultiesType): QuestionInfo
+
+    fun clearCashedQuestions()
 
     fun getCategories(): List<Category>
 

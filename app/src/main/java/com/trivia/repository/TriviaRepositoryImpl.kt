@@ -3,6 +3,7 @@ package com.trivia.repository
 import com.trivia.remote.TriviaService
 import com.trivia.remote.response.QuestionInfo
 import com.trivia.repository.data.Data
+import com.trivia.repository.data.CashQuestionsHelper
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.CustomException
 import com.trivia.repository.model.DifficultiesType
@@ -13,10 +14,26 @@ import java.io.IOException
 import javax.inject.Inject
 
 class TriviaRepositoryImpl @Inject constructor(
-    private val apiService: TriviaService
+    private val apiService: TriviaService,
+    private val cashQuestionsHelper: CashQuestionsHelper
 ): TriviaRepository  {
 
-    override suspend fun getQuestions(category: CategoriesType, difficultiesType: DifficultiesType): List<QuestionInfo> {
+    override suspend fun getCurrentQuestion(
+        category: CategoriesType,
+        difficultiesType: DifficultiesType
+    ): QuestionInfo {
+        val question = cashQuestionsHelper.getCurrentQuestion()
+        if (question == null){
+            cashQuestionsHelper.setActiveQuestions(getQuestions(category, difficultiesType))
+        }
+        return cashQuestionsHelper.getCurrentQuestion()!!
+    }
+
+    override fun clearCashedQuestions() {
+        cashQuestionsHelper.clear()
+    }
+
+    private suspend fun getQuestions(category: CategoriesType, difficultiesType: DifficultiesType): List<QuestionInfo> {
         return wrapBaseResponse { apiService.getQuestions(categoriesType = category, difficultiesType = difficultiesType) }
     }
 
