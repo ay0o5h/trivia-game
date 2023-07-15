@@ -2,7 +2,7 @@ package com.trivia.repository.data
 
 import com.trivia.remote.response.QuestionInfo
 
-interface QuestionsDataSource {
+interface CashQuestionsHelper {
     fun setActiveQuestions(questions: List<QuestionInfo>)
     fun getCurrentQuestion(): QuestionInfo?
     fun clear()

@@ -2,8 +2,8 @@ package com.trivia.di
 
 import com.trivia.repository.TriviaRepository
 import com.trivia.repository.TriviaRepositoryImpl
-import com.trivia.repository.data.QuestionsDataSource
-import com.trivia.repository.data.QuestionsDataSourceImpl
+import com.trivia.repository.data.CashQuestionsHelper
+import com.trivia.repository.data.CashQuestionsHelperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ abstract class RepositoryModule {
     abstract fun provideRepository(repository: TriviaRepositoryImpl): TriviaRepository
 
     @Binds
-    abstract fun bindsQuestionsSource(questionsDataSourceImpl: QuestionsDataSourceImpl): QuestionsDataSource
+    abstract fun bindsQuestionsSource(questionsDataSourceImpl: CashQuestionsHelperImpl): CashQuestionsHelper
 }

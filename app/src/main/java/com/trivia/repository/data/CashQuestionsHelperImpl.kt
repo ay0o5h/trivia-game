@@ -5,7 +5,7 @@ import java.util.LinkedList
 import java.util.Queue
 import javax.inject.Inject
 
-class QuestionsDataSourceImpl @Inject constructor() : QuestionsDataSource {
+class CashQuestionsHelperImpl @Inject constructor() : CashQuestionsHelper {
     private val questionsQueue: Queue<QuestionInfo> = LinkedList()
 
     override fun setActiveQuestions(questions: List<QuestionInfo>) {
