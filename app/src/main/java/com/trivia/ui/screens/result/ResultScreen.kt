@@ -62,15 +62,6 @@ fun ResultContent(
 ) {
 
     MainScaffold(
-        header = {
-            Image(
-                painter = painterResource(id = R.drawable.group_astrounat),
-                contentDescription = stringResource(R.string.space),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentScale = ContentScale.FillBounds
-            )
-        },
         content = {
             Box(
                 modifier = Modifier
