@@ -79,9 +79,7 @@ fun QuestionsScreenContent(
                 CircularProgressIndicator()
             } else {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState()),
+                    modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
@@ -95,19 +93,17 @@ fun QuestionsScreenContent(
                         modifier = Modifier.padding(bottom = space_8)
                     )
                     AnimatedTimerProgress(
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = space_16, vertical = space_8),
+                        Modifier.fillMaxWidth().padding(horizontal = space_16, vertical = space_8),
                         currentTime = state.currentTime,
                         maxTime = state.maxTime
                     )
                     Text(
-                        text = state.currentQuestion.question,
+                        text = state.question,
                         style = Typography.titleLarge.copy(color = White_87),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = space_16, vertical = space_24)
                     )
-                    state.currentQuestion.optionsAfterShuffled.forEach {
+                    state.options.forEach {
                         OutlineButton(
                             text = it.text,
                             onClick = { listener.onClickAnswer(it) },
@@ -117,7 +113,7 @@ fun QuestionsScreenContent(
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     ButtonFilled(
-                        isVisible = state.currentQuestion.hasSubmitButton,
+                        isVisible = state.hasSubmitButton,
                         text = stringResource(id = R.string.submit),
                         onClick = { listener.onClickSubmit() },
                         modifier = Modifier

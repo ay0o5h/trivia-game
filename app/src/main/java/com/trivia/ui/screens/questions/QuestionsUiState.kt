@@ -3,7 +3,6 @@ package com.trivia.ui.screens.questions
 import com.trivia.ui.bases.ButtonUIState
 
 data class QuestionsUiState(
-    val currentQuestion: QuestionUiState = QuestionUiState(),
     val currentQuestionNumber: Int = 1,
     val totalQuestion: Int = 10,
     val passedQuestion: Int = 0,
@@ -12,6 +11,10 @@ data class QuestionsUiState(
     val isLoading: Boolean = true,
     val isError: Boolean = false,
     val shouldNavigate: Boolean = false,
+    val question: String = "",
+    val correctAnswerButton: AnswerButton = AnswerButton(),
+    val options: List<AnswerButton> = emptyList(),
+    val selectedAnswerButton: AnswerButton? = null,
 ) {
 
     data class AnswerButton(
@@ -21,6 +24,13 @@ data class QuestionsUiState(
 
     val isLastQuestion
         get() = currentQuestionNumber == 10
+
+    val hasSubmitButton: Boolean
+        get() = options.any { it.buttonUIState == ButtonUIState.ClickedState }
+
+    val isCorrectAnswer
+        get() = selectedAnswerButton != null && selectedAnswerButton.text == correctAnswerButton.text
+
 }
 
 data class QuestionUiState(
@@ -29,42 +39,4 @@ data class QuestionUiState(
     val otherAnswerButtons: List<QuestionsUiState.AnswerButton> = emptyList(),
     var optionsAfterShuffled: List<QuestionsUiState.AnswerButton> = emptyList(),
     var selectedAnswerButton: QuestionsUiState.AnswerButton? = null,
-) {
-    val hasSubmitButton: Boolean
-        get() = selectedAnswerButton != null
-
-    val isCorrectAnswer
-        get() = selectedAnswerButton?.text == correctAnswerButton.text
-
-    fun setSelectedAnswerStateAndShowCorrect(state: ButtonUIState) {
-        val position = optionsAfterShuffled.map { it.text }.indexOf(selectedAnswerButton?.text)
-        if (position == -1) {
-            return
-        }
-        val newList = optionsAfterShuffled.toMutableList()
-
-        newList.removeAt(position)
-        newList.add(
-            position,
-            optionsAfterShuffled[position].copy(buttonUIState = state)
-        )
-        optionsAfterShuffled =
-            newList.map { it.copy(buttonUIState = if (it.text == correctAnswerButton.text) ButtonUIState.CorrectState else it.buttonUIState) }
-    }
-
-    fun highlightSelectedItem() {
-        val position = optionsAfterShuffled.map { it.text }.indexOf(selectedAnswerButton?.text)
-        if (position == -1) {
-            return
-        }
-        val newList = optionsAfterShuffled.toMutableList()
-
-        newList.removeAt(position)
-        newList.add(
-            position,
-            optionsAfterShuffled[position].copy(buttonUIState = ButtonUIState.ClickedState)
-        )
-        optionsAfterShuffled =
-            newList.map { it.copy(buttonUIState = if (it.text == selectedAnswerButton?.text) it.buttonUIState else ButtonUIState.StartState) }
-    }
-}
+)

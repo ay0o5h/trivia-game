@@ -36,9 +36,12 @@ class QuestionsViewModel @Inject constructor(
                         .toQuestionUiState()
                 _state.update {
                     it.copy(
-                        currentQuestion = questionUiState,
+                        question = questionUiState.question,
+                        correctAnswerButton = questionUiState.correctAnswerButton,
+                        options = questionUiState.optionsAfterShuffled,
                         isLoading = false,
-                        isError = false
+                        isError = false,
+                        selectedAnswerButton = null,
                     )
                 }
                 startTimer()
@@ -72,30 +75,54 @@ class QuestionsViewModel @Inject constructor(
 
     // region interactions
     private fun changeSelectedAnswer(answer: QuestionsUiState.AnswerButton) {
-        _state.update {
-            it.apply {
-                currentQuestion.selectedAnswerButton = answer
-                currentQuestion.highlightSelectedItem()
-            }
+        _state.update { uiState ->
+            uiState.copy(
+                selectedAnswerButton = answer,
+                options = uiState.options.map {
+                    it.copy(
+                        buttonUIState = when (it.text) {
+                            answer.text -> ButtonUIState.ClickedState
+                            else -> ButtonUIState.StartState
+                        }
+                    )
+                }
+            )
         }
     }
 
     private fun submit() {
-        if (state.value.currentQuestion.hasSubmitButton) {
+        if (state.value.hasSubmitButton) {
             checkIfCorrectAnswer()
         }
     }
 
     private fun checkIfCorrectAnswer() {
         viewModelScope.launch {
-            if (state.value.currentQuestion.isCorrectAnswer) {
-                _state.update {
-                    it.copy(passedQuestion = it.passedQuestion + 1)
-                        .apply { currentQuestion.setSelectedAnswerStateAndShowCorrect(ButtonUIState.CorrectState) }
+            if (state.value.isCorrectAnswer) {
+                _state.update { uiState ->
+                    uiState.copy(
+                        options = uiState.options.map {
+                            it.copy(
+                                buttonUIState = when (it.text) {
+                                    uiState.correctAnswerButton.text -> ButtonUIState.CorrectState
+                                    else -> it.buttonUIState
+                                }
+                            )
+                        },
+                        passedQuestion = uiState.passedQuestion + 1
+                    )
                 }
             } else {
-                _state.update {
-                    it.apply { currentQuestion.setSelectedAnswerStateAndShowCorrect(ButtonUIState.ErrorState) }
+                _state.update { uiState ->
+                    uiState.copy(options = uiState.options.map {
+                        it.copy(
+                            buttonUIState = when (it.text) {
+                                uiState.correctAnswerButton.text -> ButtonUIState.CorrectState
+                                uiState.selectedAnswerButton?.text -> ButtonUIState.ErrorState
+                                else -> it.buttonUIState
+                            }
+                        )
+                    })
                 }
             }
             delay(500)
@@ -106,6 +133,7 @@ class QuestionsViewModel @Inject constructor(
     private fun nextQuestionOrNavigate() {
         if (state.value.isLastQuestion) {
             _state.update { it.copy(shouldNavigate = true) }
+            triviaRepository.clearCashedQuestions()
         } else {
             _state.update {
                 it.copy(currentQuestionNumber = it.currentQuestionNumber + 1)
@@ -122,11 +150,6 @@ class QuestionsViewModel @Inject constructor(
         submit()
     }
     // endregion
-
-    override fun onCleared() {
-        super.onCleared()
-        triviaRepository.clearCashedQuestions()
-    }
 }
 
 private fun QuestionInfo.toQuestionUiState(): QuestionUiState {
