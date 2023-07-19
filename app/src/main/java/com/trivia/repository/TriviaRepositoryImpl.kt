@@ -2,8 +2,8 @@ package com.trivia.repository
 
 import com.trivia.remote.TriviaService
 import com.trivia.remote.response.QuestionInfo
-import com.trivia.repository.data.Data
 import com.trivia.repository.data.CashQuestionsHelper
+import com.trivia.repository.data.Data
 import com.trivia.repository.model.CategoriesType
 import com.trivia.repository.model.CustomException
 import com.trivia.repository.model.DifficultiesType
@@ -22,11 +22,11 @@ class TriviaRepositoryImpl @Inject constructor(
         category: CategoriesType,
         difficultiesType: DifficultiesType
     ): QuestionInfo {
-        val question = cashQuestionsHelper.getCurrentQuestion()
+        val question = cashQuestionsHelper.peekCurrentQuestion()
         if (question == null){
             cashQuestionsHelper.setActiveQuestions(getQuestions(category, difficultiesType))
         }
-        return cashQuestionsHelper.getCurrentQuestion()!!
+        return cashQuestionsHelper.pollCurrentQuestion()!!
     }
 
     override fun clearCashedQuestions() {

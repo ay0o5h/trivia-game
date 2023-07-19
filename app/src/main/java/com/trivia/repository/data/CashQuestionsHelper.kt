@@ -4,6 +4,7 @@ import com.trivia.remote.response.QuestionInfo
 
 interface CashQuestionsHelper {
     fun setActiveQuestions(questions: List<QuestionInfo>)
-    fun getCurrentQuestion(): QuestionInfo?
+    fun pollCurrentQuestion(): QuestionInfo?
+    fun peekCurrentQuestion(): QuestionInfo?
     fun clear()
 }

@@ -12,8 +12,12 @@ class CashQuestionsHelperImpl @Inject constructor() : CashQuestionsHelper {
          questionsQueue.addAll(questions)
     }
 
-    override fun getCurrentQuestion(): QuestionInfo? {
+    override fun pollCurrentQuestion(): QuestionInfo? {
        return questionsQueue.poll()
+    }
+
+    override fun peekCurrentQuestion(): QuestionInfo? {
+        return questionsQueue.peek()
     }
 
     override fun clear() {
