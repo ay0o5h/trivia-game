@@ -16,7 +16,7 @@ import com.trivia.ui.screens.difficulty.DifficultyScreen
 private const val ROUTE = "DifficultyScreen"
 fun NavGraphBuilder.difficultyScreenRoute() {
     composable(
-        route = "$ROUTE/{$CATEGORY}",
+        route = "$ROUTE/{${CATEGORY}}",
 
         arguments = listOf(
             navArgument(CATEGORY) { type = NavType.EnumType(CategoriesType::class.java) },

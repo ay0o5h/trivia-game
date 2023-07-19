@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.trivia.ui.theme.PurpleDark
 import com.trivia.ui.theme.Typography
 import com.trivia.ui.theme.White36
+import com.trivia.ui.theme.White_36
 import com.trivia.ui.theme.White_70
 import com.trivia.ui.theme.space_15
 import com.trivia.ui.theme.space_28
@@ -34,18 +35,14 @@ fun ButtonFilled(
     text: String,
     modifier: Modifier = Modifier,
     ) {
-    val gradient = Brush.linearGradient(
-        colors = listOf(White36, PurpleDark),
-        start = Offset(x = -20f, y = 150f),
-        end = Offset(x = 400f, y = -100f),
-    )
+
 
     AnimatedVisibility(visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Box(
             modifier = modifier
                 .height(space_56)
                 .clip(RoundedCornerShape(space_28))
-                .background(brush = gradient)
+                .background(color = White_36)
                 .clickable(
                     interactionSource = CreateMutableInteractionSource(),
                     indication = CreateIndication(),
